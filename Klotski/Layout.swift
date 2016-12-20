@@ -20,7 +20,5 @@ class Layout {
         self.value = value
     }
     
-    
+
 }
-
-
