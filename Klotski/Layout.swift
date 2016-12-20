@@ -13,12 +13,10 @@ class Layout {
     let superLayout: Layout?
 
     //current layout represented as an Int value
-    let value: Int
+    let value: (lhs: Int, rhs: Int)
     
-    init(superLayout: Layout?, value: Int) {
+    init(superLayout: Layout?, value: (lhs: Int, rhs: Int)) {
         self.superLayout = superLayout
         self.value = value
     }
-    
-
 }

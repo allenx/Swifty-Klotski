@@ -12,6 +12,7 @@ class AI {
     
     static let shared = AI()
     static let people = [Person.CaoCao, Person.GuanYu, Person.ZhaoYun, Person.ZhangFei, Person.MaChao, Person.HuangZhong, Person.Soldier1, Person.Soldier2, Person.Soldier3, Person.Soldier4]
+    static let queue = SwiftyQueue<Layout>()
     
     func assignNeighbours() {
         for person in AI.people {
@@ -74,6 +75,35 @@ class AI {
     }
     
     
+    func search() {
+        let initialLayout = Layout(superLayout: nil, value: calculatePositionValues())
+        AI.queue.enqueue(value: initialLayout)
+        while !didWin() {
+            assignNeighbours()
+            for person in AI.people {
+                if person.left != nil && person.left?.count == 0 {
+                    person.goLeft {
+                        let layout = Layout(superLayout: AI.queue._front.value, value: calculatePositionValues())
+                        AI.queue.enqueue(value: layout)
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    func didWin() -> Bool {
+        
+        if Person.CaoCao.coordinate.x == 1 && Person.CaoCao.coordinate.y == 3 {
+            return true
+        }
+        return false
+    }
+}
+
+
+extension AI {
+    
     func areIntersected(lhs: (min: Int, max: Int), rhs: (min: Int, max: Int)) -> Bool {
         if lhs.max - lhs.min > rhs.max - rhs.min {
             if (rhs.max < lhs.max && rhs.max > lhs.min) || (rhs.min > lhs.min && rhs.min < lhs.max) {
@@ -90,5 +120,4 @@ class AI {
         }
         return false
     }
-    
 }

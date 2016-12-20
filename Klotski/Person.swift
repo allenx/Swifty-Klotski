@@ -42,5 +42,29 @@ class Person {
     static let Soldier2 = Person(width: 1, height: 1, coordinate: (1, 3), name: "士兵2")
     static let Soldier3 = Person(width: 1, height: 1, coordinate: (2, 3), name: "士兵3")
     static let Soldier4 = Person(width: 1, height: 1, coordinate: (3, 4), name: "士兵4")
+    
+    func goUp(and completion: () -> ()) {
+        self.coordinate.y -= 1
+        completion()
+        self.coordinate.y += 1
+    }
+    
+    func goDown(and completion: () -> ()) {
+        self.coordinate.y += 1
+        completion()
+        self.coordinate.y -= 1
+    }
+    
+    func goLeft(and completion: () -> ()) {
+        self.coordinate.x -= 1
+        completion()
+        self.coordinate.x += 1
+    }
+    
+    func goRight(and completion: () -> ()) {
+        self.coordinate.x += 1
+        completion()
+        self.coordinate.x -= 1
+    }
 
 }
