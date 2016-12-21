@@ -20,7 +20,13 @@ class _QueueItem<T> {
 public class SwiftyQueue<T> {
     typealias Element = T
     var _front: _QueueItem<Element>
-    var _back: _QueueItem<Element>
+    var _back: _QueueItem<Element> {
+        didSet {
+            if oldValue.value == nil {
+                _front = _back
+            }
+        }
+    }
     
     public init() {
         //Insert a dummy item which will disappear when an item is inserted
