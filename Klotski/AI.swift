@@ -18,6 +18,10 @@ class AI {
     
     func assignNeighbours() {
         for person in AI.people {
+            person.left = []
+            person.right = []
+            person.top = []
+            person.bottom = []
             for i in 0..<10 {
                 let personCursor = AI.people[i]
                 if personCursor.positionVal != person.positionVal {
@@ -25,7 +29,7 @@ class AI {
                     if person.coordinate.x == 1 {
                         person.left = nil
                     } else {
-                        person.left = []
+//                        person.left = []
                         if personCursor.coordinate.x + personCursor.width == person.coordinate.x && areIntersected(lhs: (personCursor.coordinate.y, personCursor.coordinate.y + personCursor.height), rhs: (person.coordinate.y, person.coordinate.y + person.height)) {
                             person.left?.append(personCursor)
                         }
@@ -35,7 +39,7 @@ class AI {
                     if person.coordinate.x + person.width > 4 {
                         person.right = nil
                     } else {
-                        person.right = []
+//                        person.right = []
                         if personCursor.coordinate.x == person.coordinate.x + person.width && areIntersected(lhs: (personCursor.coordinate.y, personCursor.coordinate.y + personCursor.height), rhs: (person.coordinate.y, person.coordinate.y + person.height)) {
                             person.right?.append(personCursor)
                         }
@@ -45,7 +49,7 @@ class AI {
                     if person.coordinate.y == 1 {
                         person.top = nil
                     } else {
-                        person.top = []
+//                        person.top = []
                         if personCursor.coordinate.y + personCursor.height == person.coordinate.y && areIntersected(lhs: (personCursor.coordinate.x, personCursor.coordinate.x + personCursor.width), rhs: (person.coordinate.x, person.coordinate.x + person.width)) {
                             person.top?.append(personCursor)
                         }
@@ -55,7 +59,7 @@ class AI {
                     if person.coordinate.y + person.height > 5 {
                         person.bottom = nil
                     } else {
-                        person.bottom = []
+//                        person.bottom = []
                         if personCursor.coordinate.y == person.coordinate.y + person.height && areIntersected(lhs: (personCursor.coordinate.x, personCursor.coordinate.x + personCursor.width), rhs: (person.coordinate.x, person.coordinate.x + person.width)) {
                             person.bottom?.append(personCursor)
                         }
@@ -82,7 +86,7 @@ class AI {
     
     
     func binaryInsert(value: (lhs: Int, rhs: Int)) -> Bool {
-
+        
         AI.valueArr.append(value)
         let fooCount = AI.valueArr.count
         AI.valueArr = AI.valueArr.removeDuplicates {
@@ -91,12 +95,15 @@ class AI {
         
         if AI.valueArr.count == fooCount {
             return true
+            // successfully inserted
         }
+        
         print("剪枝")
         return false
+        
     }
     
-    
+    //FIXME: HELP ALLENX, HE IS TOO STUPID!!! WANG FEI WANGBULEI XIAOWANGSHU
     func search() {
         let initialLayout = Layout(superLayout: nil, value: calculatePositionValues())
         //AI.queue.enqueue(value: initialLayout)
@@ -104,7 +111,7 @@ class AI {
         while !didWin() {
             //Check if current layout was already visited
             //If not, insert it into the array
-            if binaryInsert(value: calculatePositionValues()) {
+            if binaryInsert(value: AI.fooArr[0].value) {
                 assignNeighbours()
                 for person in AI.people {
                     if person.left != nil && person.left?.count == 0 {
@@ -143,14 +150,22 @@ class AI {
 //                print("队头\(AI.queue._front.value.value)")
 //                AI.queue.dequeue(value: AI.queue._front.value)
 //                setCurrentPeopleFrom(layout: AI.queue._front.value)
-                print(AI.fooArr[0].value)
-                print(AI.valueArr.count)
+                print(AI.fooArr[0])
+//                print(AI.valueArr.count)
+                for fuck in AI.fooArr {
+                    print(fuck.value)
+                }
                 AI.fooArr.remove(at: 0)
                 setCurrentPeopleFrom(layout: AI.fooArr[0])
                 
             } else {
-                //print(AI.fooArr[0].value)
-                //AI.fooArr.remove(at: 0)
+//                print(AI.fooArr[0].value)
+                print(AI.fooArr[0])
+                for fuck in AI.fooArr {
+                    print(fuck.value)
+                }
+                AI.fooArr.remove(at: 0)
+                setCurrentPeopleFrom(layout: AI.fooArr[0])
                 print(AI.fooArr.count)
                 print(AI.valueArr.count)
             }
@@ -182,7 +197,6 @@ class AI {
         for result in results {
             print(result.value)
         }
-        
     }
     
     func setCurrentPeopleFrom(layout: Layout) {
