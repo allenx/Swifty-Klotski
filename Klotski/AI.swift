@@ -15,6 +15,7 @@ class AI {
     static let queue = SwiftyQueue<Layout>()
     static var fooArr: [Layout] = []
     static var valueArr: [(lhs: Int, rhs: Int)] = []
+    static var dic: [String: Bool] = [:]
     
     func assignNeighbours() {
         for person in AI.people {
@@ -84,6 +85,14 @@ class AI {
         return (Int(lhsStr)!, Int(rhsStr)!)
     }
     
+    func calculatePositionString() -> String {
+        var foo = ""
+        for person in AI.people {
+            foo.append("\(person.coordinate.x)")
+            foo.append("\(person.coordinate.y)")
+        }
+        return foo
+    }
     
     func binarySearch(array: [(lhs: Int, rhs: Int)], value: (lhs: Int, rhs: Int)) -> (didFind: Bool, index: Int?) {
         
@@ -123,6 +132,7 @@ class AI {
         var upperIndex = AI.valueArr.count - 1
         var currentIndex: Int = 0
         
+        
         if AI.valueArr.count == 0 {
             AI.valueArr.insert(value, at: currentIndex)
             return true
@@ -157,14 +167,14 @@ class AI {
     
     
     func binaryInsert1(value: (lhs: Int, rhs: Int)) -> Bool {
-
+        
         AI.valueArr.append(value)
         
         let fooCount = AI.valueArr.count
         AI.valueArr = AI.valueArr.removeDuplicates {
             $0 == $1
         }
-
+        
         return AI.valueArr.count == fooCount
         
     }
@@ -176,7 +186,9 @@ class AI {
                 return false
             }
         }
-        AI.valueArr.append(value)
+        let index = Int(Random.random(number: UInt32(AI.valueArr.count)))
+        AI.valueArr.insert(value, at: index)
+        //AI.valueArr.append(value)
         return true
     }
     
@@ -223,8 +235,8 @@ class AI {
                         }
                     }
                 }
-
-
+                
+                
                 AI.fooArr.remove(at: 0)
                 setCurrentPeopleFrom(layout: AI.fooArr[0])
                 
@@ -232,7 +244,7 @@ class AI {
                 
                 AI.fooArr.remove(at: 0)
                 setCurrentPeopleFrom(layout: AI.fooArr[0])
-
+                
             }
         }
     }
@@ -281,7 +293,7 @@ class AI {
                         }
                     }
                 }
-
+                
                 print("格局表")
                 print(AI.valueArr.count)
                 for foo in AI.fooArr {
@@ -307,84 +319,91 @@ class AI {
         let initialLayout = Layout(superLayout: nil, value: calculatePositionValues())
         //AI.queue.enqueue(value: initialLayout)
         AI.fooArr.append(initialLayout)
+        AI.dic[calculatePositionString()] = true
         while !didWin() {
             //Check if current layout was already visited
             //If not, insert it into the array
-            if binaryInsert(value: AI.fooArr[0].value) {
-                assignNeighbours()
-                var indexArr: [Int] = []
-                while indexArr.count < 10 {
-                    let index = Random.random(number: 10)
-                    indexArr.append(Int(index))
-                    indexArr = indexArr.removeDuplicates {
+            assignNeighbours()
+            var indexArr: [Int] = []
+            while indexArr.count < 10 {
+                let index = Random.random(number: 10)
+                indexArr.append(Int(index))
+                indexArr = indexArr.removeDuplicates {
+                    $0 == $1
+                }
+            }
+            
+            for index in indexArr {
+                let person = AI.people[index]
+                var directionArr: [Int] = []
+                while directionArr.count < 4 {
+                    let direction = Random.random(number: 4)
+                    directionArr.append(Int(direction))
+                    directionArr = directionArr.removeDuplicates {
                         $0 == $1
                     }
                 }
                 
-                for index in indexArr {
-                    let person = AI.people[index]
-                    var directionArr: [Int] = []
-                    while directionArr.count < 4 {
-                        let direction = Random.random(number: 4)
-                        directionArr.append(Int(direction))
-                        directionArr = directionArr.removeDuplicates {
-                            $0 == $1
+                for direction in directionArr {
+                    switch direction {
+                    case 0:
+                        if person.left != nil && person.left?.count == 0 {
+                            person.goLeft {
+                                //let layout = Layout(superLayout: AI.queue._front.value, value: calculatePositionValues())
+                                //AI.queue.enqueue(value: layout)
+                                let layout = Layout(superLayout: AI.fooArr[0], value: calculatePositionValues())
+                                if AI.dic[calculatePositionString()] == nil {
+                                    AI.fooArr.append(layout)
+                                }
+                            }
                         }
-                    }
-                    
-                    for direction in directionArr {
-                        switch direction {
-                        case 0:
-                            if person.left != nil && person.left?.count == 0 {
-                                person.goLeft {
-                                    //let layout = Layout(superLayout: AI.queue._front.value, value: calculatePositionValues())
-                                    //AI.queue.enqueue(value: layout)
-                                    let layout = Layout(superLayout: AI.fooArr[0], value: calculatePositionValues())
+                    case 1:
+                        if person.right != nil && person.right?.count == 0 {
+                            person.goRight {
+                                //let layout = Layout(superLayout: AI.queue._front.value, value: calculatePositionValues())
+                                //AI.queue.enqueue(value: layout)
+                                let layout = Layout(superLayout: AI.fooArr[0], value: calculatePositionValues())
+                                if AI.dic[calculatePositionString()] == nil {
                                     AI.fooArr.append(layout)
                                 }
                             }
-                        case 1:
-                            if person.right != nil && person.right?.count == 0 {
-                                person.goRight {
-                                    //let layout = Layout(superLayout: AI.queue._front.value, value: calculatePositionValues())
-                                    //AI.queue.enqueue(value: layout)
-                                    let layout = Layout(superLayout: AI.fooArr[0], value: calculatePositionValues())
-                                    AI.fooArr.append(layout)
-                                }
-                            }
-                        case 3:
-                            if person.top != nil && person.top?.count == 0 {
-                                person.goUp {
-                                    //let layout = Layout(superLayout: AI.queue._front.value, value: calculatePositionValues())
-                                    //AI.queue.enqueue(value: layout)
-                                    let layout = Layout(superLayout: AI.fooArr[0], value: calculatePositionValues())
-                                    AI.fooArr.append(layout)
-                                }
-                            }
-                        default:
-                            if person.bottom != nil && person.bottom?.count == 0 {
-                                person.goDown {
-                                    //let layout = Layout(superLayout: AI.queue._front.value, value: calculatePositionValues())
-                                    //AI.queue.enqueue(value: layout)
-                                    let layout = Layout(superLayout: AI.fooArr[0], value: calculatePositionValues())
-                                    AI.fooArr.append(layout)
-                                }
-                            }
-                            
                         }
+                    case 3:
+                        if person.top != nil && person.top?.count == 0 {
+                            person.goUp {
+                                //let layout = Layout(superLayout: AI.queue._front.value, value: calculatePositionValues())
+                                //AI.queue.enqueue(value: layout)
+                                let layout = Layout(superLayout: AI.fooArr[0], value: calculatePositionValues())
+                                if AI.dic[calculatePositionString()] == nil {
+                                    AI.fooArr.append(layout)
+                                }
+                            }
+                        }
+                    default:
+                        if person.bottom != nil && person.bottom?.count == 0 {
+                            person.goDown {
+                                //let layout = Layout(superLayout: AI.queue._front.value, value: calculatePositionValues())
+                                //AI.queue.enqueue(value: layout)
+                                let layout = Layout(superLayout: AI.fooArr[0], value: calculatePositionValues())
+                                if AI.dic[calculatePositionString()] == nil {
+                                    AI.fooArr.append(layout)
+                                }
+                            }
+                        }
+                        
                     }
-                    
                 }
                 
-
-                AI.fooArr.remove(at: 0)
-                setCurrentPeopleFrom(layout: AI.fooArr[0])
-                
-            } else {
-
-                AI.fooArr.remove(at: 0)
-                setCurrentPeopleFrom(layout: AI.fooArr[0])
             }
+            
+            print("格局表")
+            AI.dic[calculatePositionString()] = true
+            print("队头格局")
+            print(AI.fooArr[0].value)
+            
+            AI.fooArr.remove(at: 0)
+            setCurrentPeopleFrom(layout: AI.fooArr[0])
+            
         }
     }
     
@@ -424,6 +443,106 @@ class AI {
             person.coordinate = (values[index * 2], values[index * 2 + 1])
         }
     }
+    
+    
+    func randomSearch1() {
+        let initialLayout = Layout(superLayout: nil, value: calculatePositionValues())
+        //AI.queue.enqueue(value: initialLayout)
+        AI.fooArr.append(initialLayout)
+        while !didWin() {
+            //Check if current layout was already visited
+            //If not, insert it into the array
+            assignNeighbours()
+            var indexArr: [Int] = []
+            while indexArr.count < 10 {
+                let index = Random.random(number: 10)
+                indexArr.append(Int(index))
+                indexArr = indexArr.removeDuplicates {
+                    $0 == $1
+                }
+            }
+            
+            for index in indexArr {
+                let person = AI.people[index]
+                var directionArr: [Int] = []
+                while directionArr.count < 4 {
+                    let direction = Random.random(number: 4)
+                    directionArr.append(Int(direction))
+                    directionArr = directionArr.removeDuplicates {
+                        $0 == $1
+                    }
+                }
+                
+                for direction in directionArr {
+                    switch direction {
+                    case 0:
+                        if person.left != nil && person.left?.count == 0 {
+                            person.goLeft {
+                                //let layout = Layout(superLayout: AI.queue._front.value, value: calculatePositionValues())
+                                //AI.queue.enqueue(value: layout)
+                                let layout = Layout(superLayout: AI.fooArr[0], value: calculatePositionValues())
+                                
+                                if AI.dic[calculatePositionString()] == nil {
+                                    AI.dic[calculatePositionString()] = true
+                                    AI.fooArr.append(layout)
+                                }
+                            }
+                        }
+                    case 1:
+                        if person.right != nil && person.right?.count == 0 {
+                            person.goRight {
+                                //let layout = Layout(superLayout: AI.queue._front.value, value: calculatePositionValues())
+                                //AI.queue.enqueue(value: layout)
+                                let layout = Layout(superLayout: AI.fooArr[0], value: calculatePositionValues())
+                                if AI.dic[calculatePositionString()] == nil {
+                                    AI.dic[calculatePositionString()] = true
+                                    AI.fooArr.append(layout)
+                                }
+                            }
+                        }
+                    case 3:
+                        if person.top != nil && person.top?.count == 0 {
+                            person.goUp {
+                                //let layout = Layout(superLayout: AI.queue._front.value, value: calculatePositionValues())
+                                //AI.queue.enqueue(value: layout)
+                                let layout = Layout(superLayout: AI.fooArr[0], value: calculatePositionValues())
+                                if AI.dic[calculatePositionString()] == nil {
+                                    AI.dic[calculatePositionString()] = true
+                                    AI.fooArr.append(layout)
+                                }
+                            }
+                        }
+                    default:
+                        if person.bottom != nil && person.bottom?.count == 0 {
+                            person.goDown {
+                                //let layout = Layout(superLayout: AI.queue._front.value, value: calculatePositionValues())
+                                //AI.queue.enqueue(value: layout)
+                                let layout = Layout(superLayout: AI.fooArr[0], value: calculatePositionValues())
+                                if AI.dic[calculatePositionString()] == nil {
+                                    AI.dic[calculatePositionString()] = true
+                                    AI.fooArr.append(layout)
+                                }
+                            }
+                        }
+                    }
+                }
+                
+            }
+            
+            print("格局表")
+            print(AI.valueArr.count)
+            //                for foo in AI.fooArr {
+            //                    print(foo.value)
+            //                }
+            print("队头格局")
+            print(AI.fooArr[0].value)
+            
+            AI.fooArr.remove(at: 0)
+            setCurrentPeopleFrom(layout: AI.fooArr[0])
+            
+        }
+    }
+    
 }
 
 

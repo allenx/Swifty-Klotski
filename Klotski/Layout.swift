@@ -14,6 +14,11 @@ class Layout {
 
     //current layout represented as an Int value
     let value: (lhs: Int, rhs: Int)
+//    let valueStr: String {
+//        get {
+//            return ("\(value.lhs)"+)
+//        }
+//    }
     
     init(superLayout: Layout?, value: (lhs: Int, rhs: Int)) {
         self.superLayout = superLayout

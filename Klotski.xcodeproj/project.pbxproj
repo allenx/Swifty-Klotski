@@ -15,6 +15,7 @@
 		B15B48321E0B6A7000B3C525 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A1EF511DE1D2B500AECC0D /* Layout.swift */; };
 		B15B48331E0B6A7300B3C525 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15B48201E0B5E7E00B3C525 /* Random.swift */; };
 		B15B48341E0B6A9300B3C525 /* SwiftyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A1EF551DE1DC5D00AECC0D /* SwiftyQueue.swift */; };
+		B18C49D11E0C3A030052E5ED /* RawAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18C49D01E0C3A020052E5ED /* RawAI.swift */; };
 		B195E2D81DDC5A4A0042B95B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B195E2D71DDC5A4A0042B95B /* AppDelegate.swift */; };
 		B195E2DA1DDC5A4A0042B95B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B195E2D91DDC5A4A0042B95B /* ViewController.swift */; };
 		B195E2DD1DDC5A4A0042B95B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B195E2DB1DDC5A4A0042B95B /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 		B15B48261E0B698100B3C525 /* KlotskiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KlotskiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B15B48281E0B698100B3C525 /* KlotskiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KlotskiTests.swift; sourceTree = "<group>"; };
 		B15B482A1E0B698100B3C525 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B18C49D01E0C3A020052E5ED /* RawAI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawAI.swift; sourceTree = "<group>"; };
 		B195E2D41DDC5A4A0042B95B /* Klotski.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Klotski.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B195E2D71DDC5A4A0042B95B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B195E2D91DDC5A4A0042B95B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				B1A1EF511DE1D2B500AECC0D /* Layout.swift */,
 				B159C4311E093B4100520E53 /* Person.swift */,
 				B1A1EF531DE1D51700AECC0D /* AI.swift */,
+				B18C49D01E0C3A020052E5ED /* RawAI.swift */,
 				B1A1EF551DE1DC5D00AECC0D /* SwiftyQueue.swift */,
 				B195E2DB1DDC5A4A0042B95B /* Main.storyboard */,
 				B195E2DE1DDC5A4B0042B95B /* Assets.xcassets */,
@@ -320,6 +323,7 @@
 				B159C4321E093B4100520E53 /* Person.swift in Sources */,
 				B1A1EF541DE1D51700AECC0D /* AI.swift in Sources */,
 				B195E2D81DDC5A4A0042B95B /* AppDelegate.swift in Sources */,
+				B18C49D11E0C3A030052E5ED /* RawAI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +518,7 @@
 				B15B482F1E0B698100B3C525 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B195E2CF1DDC5A4A0042B95B /* Build configuration list for PBXProject "Klotski" */ = {
 			isa = XCConfigurationList;
