@@ -46,7 +46,7 @@ class ViewController: UIViewController {
 //            }
 //        }
         
-        AI.shared.search()
+        AI.shared.search2()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
