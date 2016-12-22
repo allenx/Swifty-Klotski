@@ -86,20 +86,18 @@ class AI {
     
     
     func binaryInsert(value: (lhs: Int, rhs: Int)) -> Bool {
-        
+        //print(value)
         AI.valueArr.append(value)
+
         let fooCount = AI.valueArr.count
         AI.valueArr = AI.valueArr.removeDuplicates {
             $0.0 == $1.0 && $0.1 == $1.1
         }
-        
-        if AI.valueArr.count == fooCount {
-            return true
-            // successfully inserted
+        //print("\(AI.valueArr.count), \(fooCount)")
+        if !(AI.valueArr.count == fooCount) {
+            print(value)
         }
-        
-        print("剪枝")
-        return false
+        return AI.valueArr.count == fooCount
         
     }
     
@@ -150,8 +148,9 @@ class AI {
 //                print("队头\(AI.queue._front.value.value)")
 //                AI.queue.dequeue(value: AI.queue._front.value)
 //                setCurrentPeopleFrom(layout: AI.queue._front.value)
-                print(AI.fooArr[0])
-//                print(AI.valueArr.count)
+//                print(AI.fooArr[0])
+//                print(AI.fooArr.count)
+                print("Fuck")
                 for fuck in AI.fooArr {
                     print(fuck.value)
                 }
@@ -159,15 +158,16 @@ class AI {
                 setCurrentPeopleFrom(layout: AI.fooArr[0])
                 
             } else {
-//                print(AI.fooArr[0].value)
-                print(AI.fooArr[0])
+
+//                print(AI.fooArr[0])
+                print("Fuck")
                 for fuck in AI.fooArr {
                     print(fuck.value)
                 }
                 AI.fooArr.remove(at: 0)
                 setCurrentPeopleFrom(layout: AI.fooArr[0])
-                print(AI.fooArr.count)
-                print(AI.valueArr.count)
+//                print(AI.fooArr.count)
+//                print(AI.valueArr.count)
             }
         }
     }
@@ -219,7 +219,7 @@ extension AI {
                 return true
             }
         } else if lhs.max - lhs.min == rhs.max - rhs.min {
-            if lhs.max == rhs.max && lhs.min == rhs.min {
+            if (lhs.max == rhs.max && lhs.min == rhs.min) || (rhs.max < lhs.max && rhs.max > lhs.min) || (rhs.min > lhs.min && rhs.min < lhs.max) || (lhs.max < rhs.max && lhs.max > rhs.min) || (lhs.min < rhs.max && lhs.min > rhs.min) {
                 return true
             }
         } else {
