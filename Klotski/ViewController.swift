@@ -45,7 +45,8 @@ class ViewController: UIViewController {
 //                print("\(person.name)的下边有 wall")
 //            }
 //        }
-        AI.shared.randomSearch()
+        RawAI.shared.search()
+        //AI.shared.randomSearch()
         //AI.shared.randomSearch1()
         // Do any additional setup after loading the view, typically from a nib.
     }

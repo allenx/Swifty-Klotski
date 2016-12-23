@@ -8,16 +8,16 @@
 
 import Foundation
 
-enum BlockType {
-    case horizontal
-    case vertical
-    case bigSquare
-    case tinySquare
-    case foo
+enum BlockType: Int {
+    case horizontal = 3
+    case vertical = 2
+    case bigSquare = 4
+    case tinySquare = 1
+    case foo = 0
 }
 
-struct Block {
-    var coordinate: (x: Int, y: Int)
+class Block {
+    var coordinate: (x: Int, y: Int) = (0, 0)
     
     fileprivate let _width: Int
     fileprivate let _height: Int
@@ -57,17 +57,21 @@ struct Block {
         }
     }
     
-    init(_width: Int, _height: Int, _id: Int, coordinate: (x: Int, y: Int)) {
+    init(_width: Int, _height: Int, _id: Int) {
         self._width = _width
         self._height = _height
         self._id = _id
+    }
+    
+    func set(coordinate: (Int, Int)) -> Block {
         self.coordinate = coordinate
-        for i in coordinate.y..<coordinate.y+_height {
-            for j in coordinate.x..<coordinate.x+_width {
+        for i in self.coordinate.y..<self.coordinate.y+_height {
+            for j in self.coordinate.x..<self.coordinate.x+_width {
                 RawAI.shared.state[i][j] = type
                 RawAI.shared.board[i][j] = id
             }
         }
+        return self
     }
     
     var canGoLeft: Bool {
@@ -119,7 +123,10 @@ struct Block {
         }
     }
     
-    mutating func goLeft(and completion: () -> ()) {
+    func goLeft(and completion: () -> ()) {
+        if !canGoLeft {
+            return
+        }
         RawAI.shared.state[coordinate.y][coordinate.x+_width-1] = .foo
         RawAI.shared.state[coordinate.y+_height-1][coordinate.x+_width-1] = .foo
         
@@ -129,12 +136,15 @@ struct Block {
         RawAI.shared.state[coordinate.y+_height-1][coordinate.x-1] = type
         RawAI.shared.board[coordinate.y][coordinate.x-1] = id
         RawAI.shared.board[coordinate.y+_height-1][coordinate.x-1] = id
-        
+        //print("left")
         coordinate.x -= 1;
         completion()
     }
     
-    mutating func goRight(and completion: () -> ()) {
+    func goRight(and completion: () -> ()) {
+        if !canGoRight {
+            return
+        }
         RawAI.shared.state[coordinate.y][coordinate.x] = .foo
         RawAI.shared.state[coordinate.y+_height-1][coordinate.x] = .foo
         
@@ -144,12 +154,15 @@ struct Block {
         RawAI.shared.state[coordinate.y+_height-1][coordinate.x+_width] = type
         RawAI.shared.board[coordinate.y][coordinate.x+_width] = id
         RawAI.shared.board[coordinate.y+_height-1][coordinate.x+_width] = id
-        
+//        print("right")
         coordinate.x += 1;
         completion()
     }
     
-    mutating func goUp(and completion: () -> ()) {
+    func goUp(and completion: () -> ()) {
+        if !canGoUp {
+            return
+        }
         RawAI.shared.state[coordinate.y+_height-1][coordinate.x] = .foo
         RawAI.shared.state[coordinate.y+_height-1][coordinate.x+_width-1] = .foo
         
@@ -159,12 +172,15 @@ struct Block {
         RawAI.shared.state[coordinate.y-1][coordinate.x+_width-1] = type
         RawAI.shared.board[coordinate.y-1][coordinate.x] = id
         RawAI.shared.board[coordinate.y-1][coordinate.x+_width-1] = id
-        
+//        print("up")
         coordinate.y -= 1
         completion()
     }
     
-    mutating func goDown(and completion: () -> ()) {
+    func goDown(and completion: () -> ()) {
+        if !canGoDown {
+            return
+        }
         RawAI.shared.state[coordinate.y][coordinate.x] = .foo
         RawAI.shared.state[coordinate.y][coordinate.x+_width-1] = .foo
         
@@ -174,7 +190,7 @@ struct Block {
         RawAI.shared.state[coordinate.y+_height][coordinate.x+_width-1] = type
         RawAI.shared.board[coordinate.y+_height][coordinate.x] = id
         RawAI.shared.board[coordinate.y+_height][coordinate.x+_width-1] = id
-        
+//        print("down")
         coordinate.y += 1
         completion()
     }
