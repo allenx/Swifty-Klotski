@@ -199,6 +199,7 @@ class RawAI {
             updateCurrent(subLayout: layout, currentLayout: currentLayout)
             if didWin() {
                 //printSolution(encoding: layout)
+                print("We Won!")
                 return true
             }
             //Omitted
@@ -220,11 +221,60 @@ class RawAI {
     }
     
     
+    func randomSearch() {
+        initBoard()
+        encode()
+        
+        let s = currentStateCodeFrom(encoding: code)
+        queue.append(s)
+        layoutWasVisited[s] = true
+        depthFor[s] = 0
+        ts[numberOfLayoutsVisited] = s
+        fullCodeAt[numberOfLayoutsVisited] = code
+        st[s] = numberOfLayoutsVisited
+        numberOfLayoutsVisited += 1
+        parents[0] = 0
+        
+        while queue.count != 0 {
+            let cur = queue[0]
+            queue.remove(at: 0)
+            setCurrentBoardFrom(encoding: fullCodeAt[st[cur]!]!)
+            encode()
+            var indexArr: [Int] = []
+            while indexArr.count < 10 {
+                let index = Random.random(number: 10)
+                indexArr.append(Int(index))
+                indexArr = indexArr.removeDuplicates {
+                    $0 == $1
+                }
+            }
+            
+            for index in indexArr {
+                let block = blocks[index]
+                var directionArr: [Int] = []
+                while directionArr.count < 4 {
+                    let direction = Random.random(number: 4)
+                    directionArr.append(Int(direction))
+                    directionArr = directionArr.removeDuplicates {
+                        $0 == $1
+                    }
+                }
+                
+                for direction in directionArr {
+                    if move(block: block, currentLayout: cur, direction: direction) {
+                        return
+                    }
+                }
+            }
+        }
+    }
+    
+    
     func search() {
         initBoard()
         
         encode()
-        print(code)
+//        print(code)
 //        print("fuck"+code)
         let s = currentStateCodeFrom(encoding: code)
         queue.append(s)
@@ -273,6 +323,35 @@ class RawAI {
     
 }
 
+
+extension RawAI {
+//    int main() {
+//    
+//    string a = "2041412220414122233434272315162718000019";
+//    
+//    for (int i = 0; i < 10; i++) {
+//    personArray[i].x = -1;
+//    personArray[i].y = -1;
+//    }
+//    
+//    for (int i = 0; i < 40; i = i+ 2) {
+//    int person =(int) (a[i + 1] - '0');
+//    if (personArray[person].x == -1 && personArray[person].y == -1) {
+//    cout << "fuzhi" <<endl;
+//    cout << "person: " << person << endl;
+//    cout << "i: " << i << endl;
+//    personArray[person].x = (i / 2) % 4;
+//    personArray[person].y = (i / 2 - personArray[person].x) / 4;
+//    cout << "coordinate: " << personArray[person].x << ", " << personArray[person].y << endl;
+//    }
+//    }	
+//    return 0;
+//    }
+//    
+//    func decode(string: String) {
+//        
+//    }
+}
 
 extension String {
     
