@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B195E2D31DDC5A4A0042B95B"
-               BuildableName = "Klotski.app"
-               BlueprintName = "Klotski"
-               ReferencedContainer = "container:Klotski.xcodeproj">
+               BlueprintIdentifier = "B1B738DE1E0D4C230007F97E"
+               BuildableName = "Swifty-Klotski.app"
+               BlueprintName = "Swifty-Klotski"
+               ReferencedContainer = "container:Swifty-Klotski.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,20 +32,30 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B15B48251E0B698100B3C525"
-               BuildableName = "KlotskiTests.xctest"
-               BlueprintName = "KlotskiTests"
-               ReferencedContainer = "container:Klotski.xcodeproj">
+               BlueprintIdentifier = "B1B738F81E0D4C230007F97E"
+               BuildableName = "Swifty-KlotskiTests.xctest"
+               BlueprintName = "Swifty-KlotskiTests"
+               ReferencedContainer = "container:Swifty-Klotski.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B1B739031E0D4C230007F97E"
+               BuildableName = "Swifty-KlotskiUITests.xctest"
+               BlueprintName = "Swifty-KlotskiUITests"
+               ReferencedContainer = "container:Swifty-Klotski.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B195E2D31DDC5A4A0042B95B"
-            BuildableName = "Klotski.app"
-            BlueprintName = "Klotski"
-            ReferencedContainer = "container:Klotski.xcodeproj">
+            BlueprintIdentifier = "B1B738DE1E0D4C230007F97E"
+            BuildableName = "Swifty-Klotski.app"
+            BlueprintName = "Swifty-Klotski"
+            ReferencedContainer = "container:Swifty-Klotski.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -65,10 +75,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B195E2D31DDC5A4A0042B95B"
-            BuildableName = "Klotski.app"
-            BlueprintName = "Klotski"
-            ReferencedContainer = "container:Klotski.xcodeproj">
+            BlueprintIdentifier = "B1B738DE1E0D4C230007F97E"
+            BuildableName = "Swifty-Klotski.app"
+            BlueprintName = "Swifty-Klotski"
+            ReferencedContainer = "container:Swifty-Klotski.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -84,10 +94,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B195E2D31DDC5A4A0042B95B"
-            BuildableName = "Klotski.app"
-            BlueprintName = "Klotski"
-            ReferencedContainer = "container:Klotski.xcodeproj">
+            BlueprintIdentifier = "B1B738DE1E0D4C230007F97E"
+            BuildableName = "Swifty-Klotski.app"
+            BlueprintName = "Swifty-Klotski"
+            ReferencedContainer = "container:Swifty-Klotski.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

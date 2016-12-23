@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Klotski.xcscheme</key>
+		<key>Swifty-Klotski.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>B15B48251E0B698100B3C525</key>
+		<key>B1B738DE1E0D4C230007F97E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B195E2D31DDC5A4A0042B95B</key>
+		<key>B1B738F81E0D4C230007F97E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B1B739031E0D4C230007F97E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  Klotski
+//  Swifty-Klotski
 //
-//  Created by Allen X on 11/16/16.
+//  Created by Allen X on 12/23/16.
 //  Copyright © 2016 allenx. All rights reserved.
 //
 

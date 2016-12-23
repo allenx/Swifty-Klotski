@@ -1,0 +1,613 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B1B738E31E0D4C230007F97E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B738E21E0D4C230007F97E /* AppDelegate.swift */; };
+		B1B738E51E0D4C230007F97E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B1B738E41E0D4C230007F97E /* GameScene.sks */; };
+		B1B738E71E0D4C230007F97E /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = B1B738E61E0D4C230007F97E /* Actions.sks */; };
+		B1B738E91E0D4C230007F97E /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B738E81E0D4C230007F97E /* GameScene.swift */; };
+		B1B738EB1E0D4C230007F97E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B738EA1E0D4C230007F97E /* GameViewController.swift */; };
+		B1B738EE1E0D4C230007F97E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1B738EC1E0D4C230007F97E /* Main.storyboard */; };
+		B1B738F01E0D4C230007F97E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1B738EF1E0D4C230007F97E /* Assets.xcassets */; };
+		B1B738F31E0D4C230007F97E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1B738F11E0D4C230007F97E /* LaunchScreen.storyboard */; };
+		B1B738FE1E0D4C230007F97E /* Swifty_KlotskiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B738FD1E0D4C230007F97E /* Swifty_KlotskiTests.swift */; };
+		B1B739091E0D4C230007F97E /* Swifty_KlotskiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B739081E0D4C230007F97E /* Swifty_KlotskiUITests.swift */; };
+		B1B7391E1E0D4C5E0007F97E /* AI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B739171E0D4C5E0007F97E /* AI.swift */; };
+		B1B7391F1E0D4C5E0007F97E /* AI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B739171E0D4C5E0007F97E /* AI.swift */; };
+		B1B739201E0D4C5E0007F97E /* AI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B739171E0D4C5E0007F97E /* AI.swift */; };
+		B1B739211E0D4C5E0007F97E /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B739181E0D4C5E0007F97E /* Block.swift */; };
+		B1B739221E0D4C5E0007F97E /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B739181E0D4C5E0007F97E /* Block.swift */; };
+		B1B739231E0D4C5E0007F97E /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B739181E0D4C5E0007F97E /* Block.swift */; };
+		B1B739241E0D4C5E0007F97E /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B739191E0D4C5E0007F97E /* Layout.swift */; };
+		B1B739251E0D4C5E0007F97E /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B739191E0D4C5E0007F97E /* Layout.swift */; };
+		B1B739261E0D4C5E0007F97E /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B739191E0D4C5E0007F97E /* Layout.swift */; };
+		B1B739271E0D4C5E0007F97E /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B7391A1E0D4C5E0007F97E /* Person.swift */; };
+		B1B739281E0D4C5E0007F97E /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B7391A1E0D4C5E0007F97E /* Person.swift */; };
+		B1B739291E0D4C5E0007F97E /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B7391A1E0D4C5E0007F97E /* Person.swift */; };
+		B1B7392A1E0D4C5E0007F97E /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B7391B1E0D4C5E0007F97E /* Random.swift */; };
+		B1B7392B1E0D4C5E0007F97E /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B7391B1E0D4C5E0007F97E /* Random.swift */; };
+		B1B7392C1E0D4C5E0007F97E /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B7391B1E0D4C5E0007F97E /* Random.swift */; };
+		B1B7392D1E0D4C5E0007F97E /* RawAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B7391C1E0D4C5E0007F97E /* RawAI.swift */; };
+		B1B7392E1E0D4C5E0007F97E /* RawAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B7391C1E0D4C5E0007F97E /* RawAI.swift */; };
+		B1B7392F1E0D4C5E0007F97E /* RawAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B7391C1E0D4C5E0007F97E /* RawAI.swift */; };
+		B1B739301E0D4C5E0007F97E /* SwiftyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B7391D1E0D4C5E0007F97E /* SwiftyQueue.swift */; };
+		B1B739311E0D4C5E0007F97E /* SwiftyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B7391D1E0D4C5E0007F97E /* SwiftyQueue.swift */; };
+		B1B739321E0D4C5E0007F97E /* SwiftyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B7391D1E0D4C5E0007F97E /* SwiftyQueue.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B1B738FA1E0D4C230007F97E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1B738D71E0D4C230007F97E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1B738DE1E0D4C230007F97E;
+			remoteInfo = "Swifty-Klotski";
+		};
+		B1B739051E0D4C230007F97E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1B738D71E0D4C230007F97E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1B738DE1E0D4C230007F97E;
+			remoteInfo = "Swifty-Klotski";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B1B738DF1E0D4C230007F97E /* Swifty-Klotski.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swifty-Klotski.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1B738E21E0D4C230007F97E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B1B738E41E0D4C230007F97E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		B1B738E61E0D4C230007F97E /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		B1B738E81E0D4C230007F97E /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		B1B738EA1E0D4C230007F97E /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		B1B738ED1E0D4C230007F97E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B1B738EF1E0D4C230007F97E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B1B738F21E0D4C230007F97E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B1B738F41E0D4C230007F97E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1B738F91E0D4C230007F97E /* Swifty-KlotskiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Swifty-KlotskiTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1B738FD1E0D4C230007F97E /* Swifty_KlotskiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swifty_KlotskiTests.swift; sourceTree = "<group>"; };
+		B1B738FF1E0D4C230007F97E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1B739041E0D4C230007F97E /* Swifty-KlotskiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Swifty-KlotskiUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1B739081E0D4C230007F97E /* Swifty_KlotskiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swifty_KlotskiUITests.swift; sourceTree = "<group>"; };
+		B1B7390A1E0D4C230007F97E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1B739171E0D4C5E0007F97E /* AI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AI.swift; sourceTree = "<group>"; };
+		B1B739181E0D4C5E0007F97E /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
+		B1B739191E0D4C5E0007F97E /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		B1B7391A1E0D4C5E0007F97E /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		B1B7391B1E0D4C5E0007F97E /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
+		B1B7391C1E0D4C5E0007F97E /* RawAI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawAI.swift; sourceTree = "<group>"; };
+		B1B7391D1E0D4C5E0007F97E /* SwiftyQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyQueue.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B1B738DC1E0D4C230007F97E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1B738F61E0D4C230007F97E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1B739011E0D4C230007F97E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B1B738D61E0D4C230007F97E = {
+			isa = PBXGroup;
+			children = (
+				B1B738E11E0D4C230007F97E /* Swifty-Klotski */,
+				B1B738FC1E0D4C230007F97E /* Swifty-KlotskiTests */,
+				B1B739071E0D4C230007F97E /* Swifty-KlotskiUITests */,
+				B1B738E01E0D4C230007F97E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B1B738E01E0D4C230007F97E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B1B738DF1E0D4C230007F97E /* Swifty-Klotski.app */,
+				B1B738F91E0D4C230007F97E /* Swifty-KlotskiTests.xctest */,
+				B1B739041E0D4C230007F97E /* Swifty-KlotskiUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B1B738E11E0D4C230007F97E /* Swifty-Klotski */ = {
+			isa = PBXGroup;
+			children = (
+				B1B739161E0D4C5E0007F97E /* Model */,
+				B1B738E21E0D4C230007F97E /* AppDelegate.swift */,
+				B1B738E41E0D4C230007F97E /* GameScene.sks */,
+				B1B738E61E0D4C230007F97E /* Actions.sks */,
+				B1B738E81E0D4C230007F97E /* GameScene.swift */,
+				B1B738EA1E0D4C230007F97E /* GameViewController.swift */,
+				B1B738EC1E0D4C230007F97E /* Main.storyboard */,
+				B1B738EF1E0D4C230007F97E /* Assets.xcassets */,
+				B1B738F11E0D4C230007F97E /* LaunchScreen.storyboard */,
+				B1B738F41E0D4C230007F97E /* Info.plist */,
+			);
+			path = "Swifty-Klotski";
+			sourceTree = "<group>";
+		};
+		B1B738FC1E0D4C230007F97E /* Swifty-KlotskiTests */ = {
+			isa = PBXGroup;
+			children = (
+				B1B738FD1E0D4C230007F97E /* Swifty_KlotskiTests.swift */,
+				B1B738FF1E0D4C230007F97E /* Info.plist */,
+			);
+			path = "Swifty-KlotskiTests";
+			sourceTree = "<group>";
+		};
+		B1B739071E0D4C230007F97E /* Swifty-KlotskiUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B1B739081E0D4C230007F97E /* Swifty_KlotskiUITests.swift */,
+				B1B7390A1E0D4C230007F97E /* Info.plist */,
+			);
+			path = "Swifty-KlotskiUITests";
+			sourceTree = "<group>";
+		};
+		B1B739161E0D4C5E0007F97E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B1B739171E0D4C5E0007F97E /* AI.swift */,
+				B1B739181E0D4C5E0007F97E /* Block.swift */,
+				B1B739191E0D4C5E0007F97E /* Layout.swift */,
+				B1B7391A1E0D4C5E0007F97E /* Person.swift */,
+				B1B7391B1E0D4C5E0007F97E /* Random.swift */,
+				B1B7391C1E0D4C5E0007F97E /* RawAI.swift */,
+				B1B7391D1E0D4C5E0007F97E /* SwiftyQueue.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B1B738DE1E0D4C230007F97E /* Swifty-Klotski */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1B7390D1E0D4C230007F97E /* Build configuration list for PBXNativeTarget "Swifty-Klotski" */;
+			buildPhases = (
+				B1B738DB1E0D4C230007F97E /* Sources */,
+				B1B738DC1E0D4C230007F97E /* Frameworks */,
+				B1B738DD1E0D4C230007F97E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Swifty-Klotski";
+			productName = "Swifty-Klotski";
+			productReference = B1B738DF1E0D4C230007F97E /* Swifty-Klotski.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B1B738F81E0D4C230007F97E /* Swifty-KlotskiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1B739101E0D4C230007F97E /* Build configuration list for PBXNativeTarget "Swifty-KlotskiTests" */;
+			buildPhases = (
+				B1B738F51E0D4C230007F97E /* Sources */,
+				B1B738F61E0D4C230007F97E /* Frameworks */,
+				B1B738F71E0D4C230007F97E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B1B738FB1E0D4C230007F97E /* PBXTargetDependency */,
+			);
+			name = "Swifty-KlotskiTests";
+			productName = "Swifty-KlotskiTests";
+			productReference = B1B738F91E0D4C230007F97E /* Swifty-KlotskiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B1B739031E0D4C230007F97E /* Swifty-KlotskiUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1B739131E0D4C230007F97E /* Build configuration list for PBXNativeTarget "Swifty-KlotskiUITests" */;
+			buildPhases = (
+				B1B739001E0D4C230007F97E /* Sources */,
+				B1B739011E0D4C230007F97E /* Frameworks */,
+				B1B739021E0D4C230007F97E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B1B739061E0D4C230007F97E /* PBXTargetDependency */,
+			);
+			name = "Swifty-KlotskiUITests";
+			productName = "Swifty-KlotskiUITests";
+			productReference = B1B739041E0D4C230007F97E /* Swifty-KlotskiUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B1B738D71E0D4C230007F97E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = allenx;
+				TargetAttributes = {
+					B1B738DE1E0D4C230007F97E = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = N777F9PD46;
+						ProvisioningStyle = Automatic;
+					};
+					B1B738F81E0D4C230007F97E = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = N777F9PD46;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B1B738DE1E0D4C230007F97E;
+					};
+					B1B739031E0D4C230007F97E = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = N777F9PD46;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B1B738DE1E0D4C230007F97E;
+					};
+				};
+			};
+			buildConfigurationList = B1B738DA1E0D4C230007F97E /* Build configuration list for PBXProject "Swifty-Klotski" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B1B738D61E0D4C230007F97E;
+			productRefGroup = B1B738E01E0D4C230007F97E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B1B738DE1E0D4C230007F97E /* Swifty-Klotski */,
+				B1B738F81E0D4C230007F97E /* Swifty-KlotskiTests */,
+				B1B739031E0D4C230007F97E /* Swifty-KlotskiUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B1B738DD1E0D4C230007F97E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1B738EE1E0D4C230007F97E /* Main.storyboard in Resources */,
+				B1B738E51E0D4C230007F97E /* GameScene.sks in Resources */,
+				B1B738F01E0D4C230007F97E /* Assets.xcassets in Resources */,
+				B1B738F31E0D4C230007F97E /* LaunchScreen.storyboard in Resources */,
+				B1B738E71E0D4C230007F97E /* Actions.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1B738F71E0D4C230007F97E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1B739021E0D4C230007F97E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B1B738DB1E0D4C230007F97E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1B7392A1E0D4C5E0007F97E /* Random.swift in Sources */,
+				B1B738E91E0D4C230007F97E /* GameScene.swift in Sources */,
+				B1B7391E1E0D4C5E0007F97E /* AI.swift in Sources */,
+				B1B739301E0D4C5E0007F97E /* SwiftyQueue.swift in Sources */,
+				B1B739211E0D4C5E0007F97E /* Block.swift in Sources */,
+				B1B738EB1E0D4C230007F97E /* GameViewController.swift in Sources */,
+				B1B739271E0D4C5E0007F97E /* Person.swift in Sources */,
+				B1B738E31E0D4C230007F97E /* AppDelegate.swift in Sources */,
+				B1B739241E0D4C5E0007F97E /* Layout.swift in Sources */,
+				B1B7392D1E0D4C5E0007F97E /* RawAI.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1B738F51E0D4C230007F97E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1B739281E0D4C5E0007F97E /* Person.swift in Sources */,
+				B1B739221E0D4C5E0007F97E /* Block.swift in Sources */,
+				B1B7392E1E0D4C5E0007F97E /* RawAI.swift in Sources */,
+				B1B7392B1E0D4C5E0007F97E /* Random.swift in Sources */,
+				B1B739251E0D4C5E0007F97E /* Layout.swift in Sources */,
+				B1B738FE1E0D4C230007F97E /* Swifty_KlotskiTests.swift in Sources */,
+				B1B7391F1E0D4C5E0007F97E /* AI.swift in Sources */,
+				B1B739311E0D4C5E0007F97E /* SwiftyQueue.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1B739001E0D4C230007F97E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1B739291E0D4C5E0007F97E /* Person.swift in Sources */,
+				B1B739231E0D4C5E0007F97E /* Block.swift in Sources */,
+				B1B7392F1E0D4C5E0007F97E /* RawAI.swift in Sources */,
+				B1B7392C1E0D4C5E0007F97E /* Random.swift in Sources */,
+				B1B739261E0D4C5E0007F97E /* Layout.swift in Sources */,
+				B1B739091E0D4C230007F97E /* Swifty_KlotskiUITests.swift in Sources */,
+				B1B739201E0D4C5E0007F97E /* AI.swift in Sources */,
+				B1B739321E0D4C5E0007F97E /* SwiftyQueue.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B1B738FB1E0D4C230007F97E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1B738DE1E0D4C230007F97E /* Swifty-Klotski */;
+			targetProxy = B1B738FA1E0D4C230007F97E /* PBXContainerItemProxy */;
+		};
+		B1B739061E0D4C230007F97E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1B738DE1E0D4C230007F97E /* Swifty-Klotski */;
+			targetProxy = B1B739051E0D4C230007F97E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B1B738EC1E0D4C230007F97E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B1B738ED1E0D4C230007F97E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B1B738F11E0D4C230007F97E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B1B738F21E0D4C230007F97E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B1B7390B1E0D4C230007F97E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B1B7390C1E0D4C230007F97E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B1B7390E1E0D4C230007F97E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = N777F9PD46;
+				INFOPLIST_FILE = "Swifty-Klotski/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.allenx.Swifty-Klotski";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		B1B7390F1E0D4C230007F97E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = N777F9PD46;
+				INFOPLIST_FILE = "Swifty-Klotski/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.allenx.Swifty-Klotski";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		B1B739111E0D4C230007F97E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = N777F9PD46;
+				INFOPLIST_FILE = "Swifty-KlotskiTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.allenx.Swifty-KlotskiTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Swifty-Klotski.app/Swifty-Klotski";
+			};
+			name = Debug;
+		};
+		B1B739121E0D4C230007F97E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = N777F9PD46;
+				INFOPLIST_FILE = "Swifty-KlotskiTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.allenx.Swifty-KlotskiTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Swifty-Klotski.app/Swifty-Klotski";
+			};
+			name = Release;
+		};
+		B1B739141E0D4C230007F97E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = N777F9PD46;
+				INFOPLIST_FILE = "Swifty-KlotskiUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.allenx.Swifty-KlotskiUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "Swifty-Klotski";
+			};
+			name = Debug;
+		};
+		B1B739151E0D4C230007F97E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = N777F9PD46;
+				INFOPLIST_FILE = "Swifty-KlotskiUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.allenx.Swifty-KlotskiUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "Swifty-Klotski";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B1B738DA1E0D4C230007F97E /* Build configuration list for PBXProject "Swifty-Klotski" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1B7390B1E0D4C230007F97E /* Debug */,
+				B1B7390C1E0D4C230007F97E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1B7390D1E0D4C230007F97E /* Build configuration list for PBXNativeTarget "Swifty-Klotski" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1B7390E1E0D4C230007F97E /* Debug */,
+				B1B7390F1E0D4C230007F97E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B1B739101E0D4C230007F97E /* Build configuration list for PBXNativeTarget "Swifty-KlotskiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1B739111E0D4C230007F97E /* Debug */,
+				B1B739121E0D4C230007F97E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B1B739131E0D4C230007F97E /* Build configuration list for PBXNativeTarget "Swifty-KlotskiUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1B739141E0D4C230007F97E /* Debug */,
+				B1B739151E0D4C230007F97E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B1B738D71E0D4C230007F97E /* Project object */;
+}

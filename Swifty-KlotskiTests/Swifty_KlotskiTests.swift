@@ -1,14 +1,15 @@
 //
-//  KlotskiTests.swift
-//  KlotskiTests
+//  Swifty_KlotskiTests.swift
+//  Swifty-KlotskiTests
 //
-//  Created by Allen X on 12/22/16.
+//  Created by Allen X on 12/23/16.
 //  Copyright © 2016 allenx. All rights reserved.
 //
 
 import XCTest
+@testable import Swifty_Klotski
 
-class KlotskiTests: XCTestCase {
+class Swifty_KlotskiTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -29,8 +30,6 @@ class KlotskiTests: XCTestCase {
         // This is an example of a performance test case.
         self.measure {
             // Put the code you want to measure the time of here.
-            //AI.shared.search()
-            RawAI.shared.search()
         }
     }
     
