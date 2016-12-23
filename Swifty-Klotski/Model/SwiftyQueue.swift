@@ -8,47 +8,40 @@
 
 import Foundation
 
-class _QueueItem<T> {
-    let value: T!
-    var next: _QueueItem?
+public struct SwiftyQueue<T> {
     
-    init(_ newValue: T?) {
-        self.value = newValue
+    // 2
+    fileprivate var list = LinkedList<T>()
+    
+    public var isEmpty: Bool {
+        return list.isEmpty
+    }
+    
+    // 3
+    public mutating func enqueue(_ element: T) {
+        list.append(element)
+    }
+    
+    // 4
+    public mutating func dequeue() -> T? {
+        guard !list.isEmpty, let element = list.first else { return nil }
+        
+        list.remove(element)
+        
+        return element.value
+    }
+    
+    // 5
+    public func peek() -> T? {
+        return list.first?.value
     }
 }
 
-public class SwiftyQueue<T> {
-    typealias Element = T
-    var _front: _QueueItem<Element>
-    var _back: _QueueItem<Element> {
-        didSet {
-            if oldValue.value == nil {
-                _front = _back
-            }
-        }
-    }
-    
-    public init() {
-        //Insert a dummy item which will disappear when an item is inserted
-        _back = _QueueItem(nil)
-        _front = _back
-    }
-    
-    func enqueue(value: Element) {
-        _back.next = _QueueItem(value)
-        _back = _back.next!
-    }
-    
-    func dequeue(value: Element) -> Element? {
-        if let newHead = _front.next {
-            _front = newHead
-            return newHead.value
-        } else {
-            return nil
-        }
-    }
-    
-    func isEmpty() -> Bool {
-        return _front === _back
+// 1
+extension SwiftyQueue: CustomStringConvertible {
+    // 2
+    public var description: String {
+        // 3
+        return list.description
     }
 }

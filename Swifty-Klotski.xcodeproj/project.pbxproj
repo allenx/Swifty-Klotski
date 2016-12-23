@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46D1DF2F22BECCD7B75A76CA /* Pods_Swifty_KlotskiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 084D040C6620E35E514FAA4E /* Pods_Swifty_KlotskiUITests.framework */; };
+		60DC734840260CFB1EC6FD9E /* Pods_Swifty_Klotski.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07790E33135C7E11F4168A6C /* Pods_Swifty_Klotski.framework */; };
+		9E95490BCB043062BAA13014 /* Pods_Swifty_KlotskiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB101678A62DC1F0B603DDB /* Pods_Swifty_KlotskiTests.framework */; };
+		B12501201E0D922C00FCAA9A /* SwiftyLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B125011F1E0D922C00FCAA9A /* SwiftyLinkedList.swift */; };
+		B12501211E0D922C00FCAA9A /* SwiftyLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B125011F1E0D922C00FCAA9A /* SwiftyLinkedList.swift */; };
+		B12501221E0D922C00FCAA9A /* SwiftyLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B125011F1E0D922C00FCAA9A /* SwiftyLinkedList.swift */; };
 		B1B738E31E0D4C230007F97E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B738E21E0D4C230007F97E /* AppDelegate.swift */; };
-		B1B738E51E0D4C230007F97E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B1B738E41E0D4C230007F97E /* GameScene.sks */; };
-		B1B738E71E0D4C230007F97E /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = B1B738E61E0D4C230007F97E /* Actions.sks */; };
-		B1B738E91E0D4C230007F97E /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B738E81E0D4C230007F97E /* GameScene.swift */; };
-		B1B738EB1E0D4C230007F97E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B738EA1E0D4C230007F97E /* GameViewController.swift */; };
 		B1B738EE1E0D4C230007F97E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1B738EC1E0D4C230007F97E /* Main.storyboard */; };
 		B1B738F01E0D4C230007F97E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1B738EF1E0D4C230007F97E /* Assets.xcassets */; };
 		B1B738F31E0D4C230007F97E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1B738F11E0D4C230007F97E /* LaunchScreen.storyboard */; };
@@ -38,6 +40,18 @@
 		B1B739301E0D4C5E0007F97E /* SwiftyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B7391D1E0D4C5E0007F97E /* SwiftyQueue.swift */; };
 		B1B739311E0D4C5E0007F97E /* SwiftyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B7391D1E0D4C5E0007F97E /* SwiftyQueue.swift */; };
 		B1B739321E0D4C5E0007F97E /* SwiftyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B7391D1E0D4C5E0007F97E /* SwiftyQueue.swift */; };
+		B1B739341E0D708A0007F97E /* ClassExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B739331E0D708A0007F97E /* ClassExtensions.swift */; };
+		B1B739351E0D708A0007F97E /* ClassExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B739331E0D708A0007F97E /* ClassExtensions.swift */; };
+		B1B739361E0D708A0007F97E /* ClassExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B739331E0D708A0007F97E /* ClassExtensions.swift */; };
+		B1B7393A1E0D73530007F97E /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B739381E0D73530007F97E /* GameScene.swift */; };
+		B1B7393B1E0D73530007F97E /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B739381E0D73530007F97E /* GameScene.swift */; };
+		B1B7393C1E0D73530007F97E /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B739381E0D73530007F97E /* GameScene.swift */; };
+		B1B7393D1E0D73530007F97E /* SpringButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B739391E0D73530007F97E /* SpringButton.swift */; };
+		B1B7393E1E0D73530007F97E /* SpringButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B739391E0D73530007F97E /* SpringButton.swift */; };
+		B1B7393F1E0D73530007F97E /* SpringButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B739391E0D73530007F97E /* SpringButton.swift */; };
+		B1B739421E0D735B0007F97E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B739411E0D735B0007F97E /* GameViewController.swift */; };
+		B1B739431E0D735B0007F97E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B739411E0D735B0007F97E /* GameViewController.swift */; };
+		B1B739441E0D735B0007F97E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B739411E0D735B0007F97E /* GameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,12 +72,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07790E33135C7E11F4168A6C /* Pods_Swifty_Klotski.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swifty_Klotski.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		084D040C6620E35E514FAA4E /* Pods_Swifty_KlotskiUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swifty_KlotskiUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E3470792A3B9BD4ED6D7940 /* Pods-Swifty-Klotski.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifty-Klotski.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swifty-Klotski/Pods-Swifty-Klotski.release.xcconfig"; sourceTree = "<group>"; };
+		0EB6167483F89E972AFB50D5 /* Pods-Swifty-KlotskiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifty-KlotskiUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swifty-KlotskiUITests/Pods-Swifty-KlotskiUITests.release.xcconfig"; sourceTree = "<group>"; };
+		0F5461EACDA2A2EFC865FA07 /* Pods-Swifty-KlotskiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifty-KlotskiUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swifty-KlotskiUITests/Pods-Swifty-KlotskiUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2F01EC75B521F1971FF3D144 /* Pods-Swifty-Klotski.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifty-Klotski.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swifty-Klotski/Pods-Swifty-Klotski.debug.xcconfig"; sourceTree = "<group>"; };
+		4F7450192532C8C061B93571 /* Pods-Swifty-KlotskiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifty-KlotskiTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swifty-KlotskiTests/Pods-Swifty-KlotskiTests.release.xcconfig"; sourceTree = "<group>"; };
+		B125011F1E0D922C00FCAA9A /* SwiftyLinkedList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyLinkedList.swift; sourceTree = "<group>"; };
 		B1B738DF1E0D4C230007F97E /* Swifty-Klotski.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swifty-Klotski.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1B738E21E0D4C230007F97E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B1B738E41E0D4C230007F97E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		B1B738E61E0D4C230007F97E /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
-		B1B738E81E0D4C230007F97E /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		B1B738EA1E0D4C230007F97E /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		B1B738ED1E0D4C230007F97E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B1B738EF1E0D4C230007F97E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1B738F21E0D4C230007F97E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -81,6 +99,12 @@
 		B1B7391B1E0D4C5E0007F97E /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		B1B7391C1E0D4C5E0007F97E /* RawAI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawAI.swift; sourceTree = "<group>"; };
 		B1B7391D1E0D4C5E0007F97E /* SwiftyQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyQueue.swift; sourceTree = "<group>"; };
+		B1B739331E0D708A0007F97E /* ClassExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassExtensions.swift; sourceTree = "<group>"; };
+		B1B739381E0D73530007F97E /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		B1B739391E0D73530007F97E /* SpringButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringButton.swift; sourceTree = "<group>"; };
+		B1B739411E0D735B0007F97E /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		D7F324A9E9543EBE0D118A70 /* Pods-Swifty-KlotskiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifty-KlotskiTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swifty-KlotskiTests/Pods-Swifty-KlotskiTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FFB101678A62DC1F0B603DDB /* Pods_Swifty_KlotskiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swifty_KlotskiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60DC734840260CFB1EC6FD9E /* Pods_Swifty_Klotski.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E95490BCB043062BAA13014 /* Pods_Swifty_KlotskiTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,12 +128,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46D1DF2F22BECCD7B75A76CA /* Pods_Swifty_KlotskiUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		318B388AB58212D899B81FED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				07790E33135C7E11F4168A6C /* Pods_Swifty_Klotski.framework */,
+				FFB101678A62DC1F0B603DDB /* Pods_Swifty_KlotskiTests.framework */,
+				084D040C6620E35E514FAA4E /* Pods_Swifty_KlotskiUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B1B738D61E0D4C230007F97E = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +152,8 @@
 				B1B738FC1E0D4C230007F97E /* Swifty-KlotskiTests */,
 				B1B739071E0D4C230007F97E /* Swifty-KlotskiUITests */,
 				B1B738E01E0D4C230007F97E /* Products */,
+				BA9947E8011DA247732CA0AE /* Pods */,
+				318B388AB58212D899B81FED /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,12 +170,11 @@
 		B1B738E11E0D4C230007F97E /* Swifty-Klotski */ = {
 			isa = PBXGroup;
 			children = (
+				B1B739331E0D708A0007F97E /* ClassExtensions.swift */,
 				B1B739161E0D4C5E0007F97E /* Model */,
+				B1B739371E0D73530007F97E /* View */,
+				B1B739401E0D735B0007F97E /* Controller */,
 				B1B738E21E0D4C230007F97E /* AppDelegate.swift */,
-				B1B738E41E0D4C230007F97E /* GameScene.sks */,
-				B1B738E61E0D4C230007F97E /* Actions.sks */,
-				B1B738E81E0D4C230007F97E /* GameScene.swift */,
-				B1B738EA1E0D4C230007F97E /* GameViewController.swift */,
 				B1B738EC1E0D4C230007F97E /* Main.storyboard */,
 				B1B738EF1E0D4C230007F97E /* Assets.xcassets */,
 				B1B738F11E0D4C230007F97E /* LaunchScreen.storyboard */,
@@ -173,8 +211,39 @@
 				B1B7391B1E0D4C5E0007F97E /* Random.swift */,
 				B1B7391C1E0D4C5E0007F97E /* RawAI.swift */,
 				B1B7391D1E0D4C5E0007F97E /* SwiftyQueue.swift */,
+				B125011F1E0D922C00FCAA9A /* SwiftyLinkedList.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B1B739371E0D73530007F97E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B1B739381E0D73530007F97E /* GameScene.swift */,
+				B1B739391E0D73530007F97E /* SpringButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B1B739401E0D735B0007F97E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B1B739411E0D735B0007F97E /* GameViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BA9947E8011DA247732CA0AE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2F01EC75B521F1971FF3D144 /* Pods-Swifty-Klotski.debug.xcconfig */,
+				0E3470792A3B9BD4ED6D7940 /* Pods-Swifty-Klotski.release.xcconfig */,
+				D7F324A9E9543EBE0D118A70 /* Pods-Swifty-KlotskiTests.debug.xcconfig */,
+				4F7450192532C8C061B93571 /* Pods-Swifty-KlotskiTests.release.xcconfig */,
+				0F5461EACDA2A2EFC865FA07 /* Pods-Swifty-KlotskiUITests.debug.xcconfig */,
+				0EB6167483F89E972AFB50D5 /* Pods-Swifty-KlotskiUITests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,9 +253,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B1B7390D1E0D4C230007F97E /* Build configuration list for PBXNativeTarget "Swifty-Klotski" */;
 			buildPhases = (
+				46EDE708416AEE001C1CF094 /* [CP] Check Pods Manifest.lock */,
 				B1B738DB1E0D4C230007F97E /* Sources */,
 				B1B738DC1E0D4C230007F97E /* Frameworks */,
 				B1B738DD1E0D4C230007F97E /* Resources */,
+				200C9B342BAB0F670AC82E5D /* [CP] Embed Pods Frameworks */,
+				6D83B30C03FA34CAEAAA79E6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -201,9 +273,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B1B739101E0D4C230007F97E /* Build configuration list for PBXNativeTarget "Swifty-KlotskiTests" */;
 			buildPhases = (
+				38B54B8E7C0588AEE3A79A21 /* [CP] Check Pods Manifest.lock */,
 				B1B738F51E0D4C230007F97E /* Sources */,
 				B1B738F61E0D4C230007F97E /* Frameworks */,
 				B1B738F71E0D4C230007F97E /* Resources */,
+				6C6384B6FF8CC2709B7125FA /* [CP] Embed Pods Frameworks */,
+				6E5697A3DFA5DC516291A473 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -219,9 +294,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B1B739131E0D4C230007F97E /* Build configuration list for PBXNativeTarget "Swifty-KlotskiUITests" */;
 			buildPhases = (
+				9619B62FE558B8357C55B408 /* [CP] Check Pods Manifest.lock */,
 				B1B739001E0D4C230007F97E /* Sources */,
 				B1B739011E0D4C230007F97E /* Frameworks */,
 				B1B739021E0D4C230007F97E /* Resources */,
+				C705471D8D7E2D8B1790C0EC /* [CP] Embed Pods Frameworks */,
+				536FCB9474C75449E9A20B11 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -288,10 +366,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1B738EE1E0D4C230007F97E /* Main.storyboard in Resources */,
-				B1B738E51E0D4C230007F97E /* GameScene.sks in Resources */,
 				B1B738F01E0D4C230007F97E /* Assets.xcassets in Resources */,
 				B1B738F31E0D4C230007F97E /* LaunchScreen.storyboard in Resources */,
-				B1B738E71E0D4C230007F97E /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,18 +387,159 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		200C9B342BAB0F670AC82E5D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swifty-Klotski/Pods-Swifty-Klotski-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		38B54B8E7C0588AEE3A79A21 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		46EDE708416AEE001C1CF094 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		536FCB9474C75449E9A20B11 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swifty-KlotskiUITests/Pods-Swifty-KlotskiUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6C6384B6FF8CC2709B7125FA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swifty-KlotskiTests/Pods-Swifty-KlotskiTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D83B30C03FA34CAEAAA79E6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swifty-Klotski/Pods-Swifty-Klotski-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6E5697A3DFA5DC516291A473 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swifty-KlotskiTests/Pods-Swifty-KlotskiTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9619B62FE558B8357C55B408 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C705471D8D7E2D8B1790C0EC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swifty-KlotskiUITests/Pods-Swifty-KlotskiUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B1B738DB1E0D4C230007F97E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1B7393A1E0D73530007F97E /* GameScene.swift in Sources */,
 				B1B7392A1E0D4C5E0007F97E /* Random.swift in Sources */,
-				B1B738E91E0D4C230007F97E /* GameScene.swift in Sources */,
 				B1B7391E1E0D4C5E0007F97E /* AI.swift in Sources */,
 				B1B739301E0D4C5E0007F97E /* SwiftyQueue.swift in Sources */,
+				B1B739421E0D735B0007F97E /* GameViewController.swift in Sources */,
 				B1B739211E0D4C5E0007F97E /* Block.swift in Sources */,
-				B1B738EB1E0D4C230007F97E /* GameViewController.swift in Sources */,
+				B12501201E0D922C00FCAA9A /* SwiftyLinkedList.swift in Sources */,
+				B1B739341E0D708A0007F97E /* ClassExtensions.swift in Sources */,
 				B1B739271E0D4C5E0007F97E /* Person.swift in Sources */,
+				B1B7393D1E0D73530007F97E /* SpringButton.swift in Sources */,
 				B1B738E31E0D4C230007F97E /* AppDelegate.swift in Sources */,
 				B1B739241E0D4C5E0007F97E /* Layout.swift in Sources */,
 				B1B7392D1E0D4C5E0007F97E /* RawAI.swift in Sources */,
@@ -333,11 +550,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1B7393B1E0D73530007F97E /* GameScene.swift in Sources */,
 				B1B739281E0D4C5E0007F97E /* Person.swift in Sources */,
 				B1B739221E0D4C5E0007F97E /* Block.swift in Sources */,
 				B1B7392E1E0D4C5E0007F97E /* RawAI.swift in Sources */,
+				B1B739431E0D735B0007F97E /* GameViewController.swift in Sources */,
 				B1B7392B1E0D4C5E0007F97E /* Random.swift in Sources */,
+				B12501211E0D922C00FCAA9A /* SwiftyLinkedList.swift in Sources */,
+				B1B739351E0D708A0007F97E /* ClassExtensions.swift in Sources */,
 				B1B739251E0D4C5E0007F97E /* Layout.swift in Sources */,
+				B1B7393E1E0D73530007F97E /* SpringButton.swift in Sources */,
 				B1B738FE1E0D4C230007F97E /* Swifty_KlotskiTests.swift in Sources */,
 				B1B7391F1E0D4C5E0007F97E /* AI.swift in Sources */,
 				B1B739311E0D4C5E0007F97E /* SwiftyQueue.swift in Sources */,
@@ -348,11 +570,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1B7393C1E0D73530007F97E /* GameScene.swift in Sources */,
 				B1B739291E0D4C5E0007F97E /* Person.swift in Sources */,
 				B1B739231E0D4C5E0007F97E /* Block.swift in Sources */,
 				B1B7392F1E0D4C5E0007F97E /* RawAI.swift in Sources */,
+				B1B739441E0D735B0007F97E /* GameViewController.swift in Sources */,
 				B1B7392C1E0D4C5E0007F97E /* Random.swift in Sources */,
+				B12501221E0D922C00FCAA9A /* SwiftyLinkedList.swift in Sources */,
+				B1B739361E0D708A0007F97E /* ClassExtensions.swift in Sources */,
 				B1B739261E0D4C5E0007F97E /* Layout.swift in Sources */,
+				B1B7393F1E0D73530007F97E /* SpringButton.swift in Sources */,
 				B1B739091E0D4C230007F97E /* Swifty_KlotskiUITests.swift in Sources */,
 				B1B739201E0D4C5E0007F97E /* AI.swift in Sources */,
 				B1B739321E0D4C5E0007F97E /* SwiftyQueue.swift in Sources */,
@@ -437,6 +664,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -480,6 +708,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -489,11 +718,13 @@
 		};
 		B1B7390E1E0D4C230007F97E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F01EC75B521F1971FF3D144 /* Pods-Swifty-Klotski.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = N777F9PD46;
 				INFOPLIST_FILE = "Swifty-Klotski/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.allenx.Swifty-Klotski";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -502,11 +733,13 @@
 		};
 		B1B7390F1E0D4C230007F97E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E3470792A3B9BD4ED6D7940 /* Pods-Swifty-Klotski.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = N777F9PD46;
 				INFOPLIST_FILE = "Swifty-Klotski/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.allenx.Swifty-Klotski";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -515,12 +748,14 @@
 		};
 		B1B739111E0D4C230007F97E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7F324A9E9543EBE0D118A70 /* Pods-Swifty-KlotskiTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = N777F9PD46;
 				INFOPLIST_FILE = "Swifty-KlotskiTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.allenx.Swifty-KlotskiTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -530,12 +765,14 @@
 		};
 		B1B739121E0D4C230007F97E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F7450192532C8C061B93571 /* Pods-Swifty-KlotskiTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = N777F9PD46;
 				INFOPLIST_FILE = "Swifty-KlotskiTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.allenx.Swifty-KlotskiTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -545,11 +782,13 @@
 		};
 		B1B739141E0D4C230007F97E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F5461EACDA2A2EFC865FA07 /* Pods-Swifty-KlotskiUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = N777F9PD46;
 				INFOPLIST_FILE = "Swifty-KlotskiUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.allenx.Swifty-KlotskiUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -559,11 +798,13 @@
 		};
 		B1B739151E0D4C230007F97E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0EB6167483F89E972AFB50D5 /* Pods-Swifty-KlotskiUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = N777F9PD46;
 				INFOPLIST_FILE = "Swifty-KlotskiUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.allenx.Swifty-KlotskiUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -590,6 +831,7 @@
 				B1B7390F1E0D4C230007F97E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B1B739101E0D4C230007F97E /* Build configuration list for PBXNativeTarget "Swifty-KlotskiTests" */ = {
 			isa = XCConfigurationList;
@@ -598,6 +840,7 @@
 				B1B739121E0D4C230007F97E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B1B739131E0D4C230007F97E /* Build configuration list for PBXNativeTarget "Swifty-KlotskiUITests" */ = {
 			isa = XCConfigurationList;
@@ -606,6 +849,7 @@
 				B1B739151E0D4C230007F97E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

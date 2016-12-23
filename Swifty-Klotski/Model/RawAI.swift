@@ -40,6 +40,10 @@ class RawAI {
     
     var fuckArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
     
+    var backtrackSteps: [[(Int, Int)]] = []
+    
+//    static let people: [Person] = [.ZhaoYun, .CaoCao, .HuangZhong, .MaChao, .GuanYu, .Soldier1, .Soldier2, .Soldier3, .Soldier4]
+    
     
     func printBoard() {
         for i in 0..<5 {
@@ -59,6 +63,7 @@ class RawAI {
             printBoard()
             return
         }
+        
         printSolution(encoding: ts[parents[st[encoding]!]]!)
         print(depthFor[encoding])
         setCurrentBoardFrom(encoding: fullCodeAt[st[encoding]!]!)
@@ -66,7 +71,9 @@ class RawAI {
     }
     
     
+    
     func initBoard() {
+        code = ""
         blocks.append(Block(_width: 1, _height: 2, _id: 0).set(coordinate: (0, 0)))
         blocks.append(Block(_width: 2, _height: 2, _id: 1).set(coordinate: (1, 0)))
         blocks.append(Block(_width: 1, _height: 2, _id: 2).set(coordinate: (3, 0)))
@@ -77,6 +84,17 @@ class RawAI {
         blocks.append(Block(_width: 1, _height: 2, _id: 7).set(coordinate: (3, 2)))
         blocks.append(Block(_width: 1, _height: 1, _id: 8).set(coordinate: (0, 4)))
         blocks.append(Block(_width: 1, _height: 1, _id: 9).set(coordinate: (3, 4)))
+        
+        //        blocks.append(Block(_width: 1, _height: 2, _id: 2).set(coordinate: (0, 0)))
+        //        blocks.append(Block(_width: 2, _height: 2, _id: 0).set(coordinate: (1, 0)))
+        //        blocks.append(Block(_width: 1, _height: 2, _id: 5).set(coordinate: (3, 0)))
+        //        blocks.append(Block(_width: 1, _height: 2, _id: 4).set(coordinate: (0, 2)))
+        //        blocks.append(Block(_width: 2, _height: 1, _id: 1).set(coordinate: (1, 2)))
+        //        blocks.append(Block(_width: 1, _height: 1, _id: 7).set(coordinate: (1, 3)))
+        //        blocks.append(Block(_width: 1, _height: 1, _id: 8).set(coordinate: (2, 3)))
+        //        blocks.append(Block(_width: 1, _height: 2, _id: 3).set(coordinate: (3, 2)))
+        //        blocks.append(Block(_width: 1, _height: 1, _id: 6).set(coordinate: (0, 4)))
+        //        blocks.append(Block(_width: 1, _height: 1, _id: 9).set(coordinate: (3, 4)))
     }
     
     func encode() {
@@ -85,6 +103,7 @@ class RawAI {
             for j in 0..<4 {
                 code.append("\(state[i][j].rawValue)")
                 code.append(board[i][j] < 0 ? "0" : "\(board[i][j])")
+//                code.append("\(board[i][j])")
             }
         }
     }
@@ -110,13 +129,13 @@ class RawAI {
         var c = 0
         for i in 0..<5 {
             for j in 0..<4 {
-//                print(foo)
+                //                print(foo)
                 if foo[c] == "1" {
-//                    if blocks.count <= b {
-//                        print("\(blocks.count), \(b)")
-//                        return
-//                    }
-//                    print(blocks.count)
+                    //                    if blocks.count <= b {
+                    //                        print("\(blocks.count), \(b)")
+                    //                        return
+                    //                    }
+                    //                    print(blocks.count)
                     blocks[b] = Block(_width: 1, _height: 1, _id: Int(encoding[2*c+1])!).set(coordinate: (j, i))
                     b = b + 1
                 } else if foo[c] == "2" {
@@ -137,13 +156,13 @@ class RawAI {
         }
     }
     
-//    func printBoard() {
-//        for i in 0..<5 {
-//            for j in 0..<4 {
-//                print(board[i][j] > = 0 ? )
-//            }
-//        }
-//    }
+    //    func printBoard() {
+    //        for i in 0..<5 {
+    //            for j in 0..<4 {
+    //                print(board[i][j] > = 0 ? )
+    //            }
+    //        }
+    //    }
     
     func didWin() -> Bool {
         //print(state[3][1].rawValue)
@@ -152,8 +171,8 @@ class RawAI {
     }
     
     func updateCurrent(subLayout: String, currentLayout: String) {
-        queue.append(subLayout)
-//        swiftyQueue.enqueue(value: subLayout)
+        //queue.append(subLayout)
+        swiftyQueue.enqueue(subLayout)
         layoutWasVisited[subLayout] = true
         depthFor[subLayout] = depthFor[currentLayout]! + 1
         ts[numberOfLayoutsVisited] = subLayout
@@ -163,7 +182,7 @@ class RawAI {
         parents[st[subLayout]!] = st[currentLayout]!
     }
     
-    func move(block: Block, currentLayout: String, direction: Int) -> Bool {
+    func move(block: Block, currentLayout: String, direction: Int, and completion: (String) -> ()) -> Bool {
         switch direction {
         case 0:
             if block.canGoLeft {
@@ -194,11 +213,13 @@ class RawAI {
         }
         
         encode()
-        let layout = currentStateCodeFrom(encoding: code)
-        if layoutWasVisited[layout] == nil {
-            updateCurrent(subLayout: layout, currentLayout: currentLayout)
+        let stateLayout = currentStateCodeFrom(encoding: code)
+        if layoutWasVisited[stateLayout] == nil {
+            updateCurrent(subLayout: stateLayout, currentLayout: currentLayout)
             if didWin() {
-                //printSolution(encoding: layout)
+                print(code)
+                printSolution(encoding: stateLayout)
+                completion(stateLayout)
                 print("We Won!")
                 return true
             }
@@ -207,13 +228,13 @@ class RawAI {
         
         switch direction {
         case 0:
-                block.goRight()
+            block.goRight()
         case 1:
-                block.goLeft()
+            block.goLeft()
         case 2:
-                block.goDown()
+            block.goDown()
         case 3:
-                block.goUp()
+            block.goUp()
         default:
             break
         }
@@ -221,12 +242,13 @@ class RawAI {
     }
     
     
-    func randomSearch() {
+    func randomSearch(and completion: (String) -> ()) {
         initBoard()
         encode()
         
         let s = currentStateCodeFrom(encoding: code)
         queue.append(s)
+//        swiftyQueue.enqueue(s)
         layoutWasVisited[s] = true
         depthFor[s] = 0
         ts[numberOfLayoutsVisited] = s
@@ -261,7 +283,7 @@ class RawAI {
                 }
                 
                 for direction in directionArr {
-                    if move(block: block, currentLayout: cur, direction: direction) {
+                    if move(block: block, currentLayout: cur, direction: direction, and: completion) {
                         return
                     }
                 }
@@ -270,15 +292,14 @@ class RawAI {
     }
     
     
-    func search() {
+    func search(and completion: (String) -> ()) {
         initBoard()
         
         encode()
-//        print(code)
-//        print("fuck"+code)
+        
         let s = currentStateCodeFrom(encoding: code)
-        queue.append(s)
-//        swiftyQueue.enqueue(value: s)
+//        queue.append(s)
+        swiftyQueue.enqueue(s)
         layoutWasVisited[s] = true
         depthFor[s] = 0
         ts[numberOfLayoutsVisited] = s
@@ -288,69 +309,74 @@ class RawAI {
         numberOfLayoutsVisited += 1
         parents[0] = 0
         
-        while queue.count != 0 {
-            let cur = queue[0]
-//            print("Queue")
-//            for cur in queue {
-//                print(cur)
-//            }
-            //printBoard()
-            queue.remove(at: 0)
-            
-            //print(cur)
+//        while queue.count != 0 {
+        while !swiftyQueue.isEmpty {
+//            let cur = queue[0]
+//            
+//            queue.remove(at: 0)
+            let cur = swiftyQueue.dequeue()!
             setCurrentBoardFrom(encoding: fullCodeAt[st[cur]!]!)
-            //printBoard()
             encode()
-            ////print(code)
+            
             for block in blocks {
                 
-                if move(block: block, currentLayout: cur, direction: 0) {
+                if move(block: block, currentLayout: cur, direction: 0, and: completion) {
                     return
                 }
-                if move(block: block, currentLayout: cur, direction: 1) {
+                if move(block: block, currentLayout: cur, direction: 1, and: completion) {
                     return
                 }
-                if move(block: block, currentLayout: cur, direction: 2) {
+                if move(block: block, currentLayout: cur, direction: 2, and: completion) {
                     return
                 }
-                if move(block: block, currentLayout: cur, direction: 3) {
+                if move(block: block, currentLayout: cur, direction: 3, and: completion) {
                     return
                 }
             }
         }
-        //print(code)
     }
     
 }
 
 
 extension RawAI {
-//    int main() {
-//    
-//    string a = "2041412220414122233434272315162718000019";
-//    
-//    for (int i = 0; i < 10; i++) {
-//    personArray[i].x = -1;
-//    personArray[i].y = -1;
-//    }
-//    
-//    for (int i = 0; i < 40; i = i+ 2) {
-//    int person =(int) (a[i + 1] - '0');
-//    if (personArray[person].x == -1 && personArray[person].y == -1) {
-//    cout << "fuzhi" <<endl;
-//    cout << "person: " << person << endl;
-//    cout << "i: " << i << endl;
-//    personArray[person].x = (i / 2) % 4;
-//    personArray[person].y = (i / 2 - personArray[person].x) / 4;
-//    cout << "coordinate: " << personArray[person].x << ", " << personArray[person].y << endl;
-//    }
-//    }	
-//    return 0;
-//    }
-//    
-//    func decode(string: String) {
-//        
-//    }
+    
+    func decode(string: String) {
+        var fooArr = Array(repeating: (-1, -1), count: 10)
+        for (index, char) in string.characters.enumerated() {
+            
+            if index % 2 == 0 {
+                
+                let cursor = Int(string[index + 1])!
+                if string[index] != "0" && fooArr[cursor].0 == -1 && fooArr[cursor].1 == -1 {
+                    fooArr[cursor].0 = (index / 2) % 4
+                    fooArr[cursor].1 = (index / 2 - fooArr[cursor].0) / 4
+                }
+            }
+        }
+        //print(fooArr)
+//        for (index, person) in people.enumerated() {
+//            person.coordinate = fooArr[index]
+//        }
+        backtrackSteps.append(fooArr)
+//        print(people[0].coordinate)
+    }
+    
+    
+    func recursivelyDecode(layout: String, and completion: () -> ()) {
+        if st[layout] == 0 {
+            decode(string: fullCodeAt[st[layout]!]!)
+            //printSolution(encoding: layout)
+            backtrackSteps = backtrackSteps.reversed()
+            for step in backtrackSteps {
+                print(step)
+            }
+            completion()
+            return
+        }
+        decode(string: fullCodeAt[st[layout]!]!)
+        recursivelyDecode(layout: ts[parents[st[layout]!]]!, and: completion)
+    }
 }
 
 extension String {
