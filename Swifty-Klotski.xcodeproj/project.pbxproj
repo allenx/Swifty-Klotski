@@ -13,6 +13,7 @@
 		B12501201E0D922C00FCAA9A /* SwiftyLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B125011F1E0D922C00FCAA9A /* SwiftyLinkedList.swift */; };
 		B12501211E0D922C00FCAA9A /* SwiftyLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B125011F1E0D922C00FCAA9A /* SwiftyLinkedList.swift */; };
 		B12501221E0D922C00FCAA9A /* SwiftyLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B125011F1E0D922C00FCAA9A /* SwiftyLinkedList.swift */; };
+		B12501241E0DBA4E00FCAA9A /* jingetiema.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B12501231E0DBA4E00FCAA9A /* jingetiema.mp3 */; };
 		B1B738E31E0D4C230007F97E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B738E21E0D4C230007F97E /* AppDelegate.swift */; };
 		B1B738EE1E0D4C230007F97E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1B738EC1E0D4C230007F97E /* Main.storyboard */; };
 		B1B738F01E0D4C230007F97E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1B738EF1E0D4C230007F97E /* Assets.xcassets */; };
@@ -80,6 +81,7 @@
 		2F01EC75B521F1971FF3D144 /* Pods-Swifty-Klotski.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifty-Klotski.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swifty-Klotski/Pods-Swifty-Klotski.debug.xcconfig"; sourceTree = "<group>"; };
 		4F7450192532C8C061B93571 /* Pods-Swifty-KlotskiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swifty-KlotskiTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swifty-KlotskiTests/Pods-Swifty-KlotskiTests.release.xcconfig"; sourceTree = "<group>"; };
 		B125011F1E0D922C00FCAA9A /* SwiftyLinkedList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyLinkedList.swift; sourceTree = "<group>"; };
+		B12501231E0DBA4E00FCAA9A /* jingetiema.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jingetiema.mp3; sourceTree = "<group>"; };
 		B1B738DF1E0D4C230007F97E /* Swifty-Klotski.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swifty-Klotski.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1B738E21E0D4C230007F97E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1B738ED1E0D4C230007F97E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		B1B738E11E0D4C230007F97E /* Swifty-Klotski */ = {
 			isa = PBXGroup;
 			children = (
+				B12501231E0DBA4E00FCAA9A /* jingetiema.mp3 */,
 				B1B739331E0D708A0007F97E /* ClassExtensions.swift */,
 				B1B739161E0D4C5E0007F97E /* Model */,
 				B1B739371E0D73530007F97E /* View */,
@@ -366,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1B738EE1E0D4C230007F97E /* Main.storyboard in Resources */,
+				B12501241E0DBA4E00FCAA9A /* jingetiema.mp3 in Resources */,
 				B1B738F01E0D4C230007F97E /* Assets.xcassets in Resources */,
 				B1B738F31E0D4C230007F97E /* LaunchScreen.storyboard in Resources */,
 			);

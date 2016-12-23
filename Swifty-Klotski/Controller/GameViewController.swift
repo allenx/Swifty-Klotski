@@ -25,7 +25,7 @@ class GameViewController: UIViewController {
             }(UIImageView())
             
             //self.view.addSubview(backgroundImageView)
-            print(self.view.bounds.size)
+//            print(self.view.bounds.size)
             let scene = GameScene(size: view.bounds.size)
             
             scene.scaleMode = .aspectFill

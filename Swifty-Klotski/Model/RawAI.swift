@@ -74,27 +74,11 @@ class RawAI {
     
     func initBoard() {
         code = ""
-        blocks.append(Block(_width: 1, _height: 2, _id: 0).set(coordinate: (0, 0)))
-        blocks.append(Block(_width: 2, _height: 2, _id: 1).set(coordinate: (1, 0)))
-        blocks.append(Block(_width: 1, _height: 2, _id: 2).set(coordinate: (3, 0)))
-        blocks.append(Block(_width: 1, _height: 2, _id: 3).set(coordinate: (0, 2)))
-        blocks.append(Block(_width: 2, _height: 1, _id: 4).set(coordinate: (1, 2)))
-        blocks.append(Block(_width: 1, _height: 1, _id: 5).set(coordinate: (1, 3)))
-        blocks.append(Block(_width: 1, _height: 1, _id: 6).set(coordinate: (2, 3)))
-        blocks.append(Block(_width: 1, _height: 2, _id: 7).set(coordinate: (3, 2)))
-        blocks.append(Block(_width: 1, _height: 1, _id: 8).set(coordinate: (0, 4)))
-        blocks.append(Block(_width: 1, _height: 1, _id: 9).set(coordinate: (3, 4)))
-        
-        //        blocks.append(Block(_width: 1, _height: 2, _id: 2).set(coordinate: (0, 0)))
-        //        blocks.append(Block(_width: 2, _height: 2, _id: 0).set(coordinate: (1, 0)))
-        //        blocks.append(Block(_width: 1, _height: 2, _id: 5).set(coordinate: (3, 0)))
-        //        blocks.append(Block(_width: 1, _height: 2, _id: 4).set(coordinate: (0, 2)))
-        //        blocks.append(Block(_width: 2, _height: 1, _id: 1).set(coordinate: (1, 2)))
-        //        blocks.append(Block(_width: 1, _height: 1, _id: 7).set(coordinate: (1, 3)))
-        //        blocks.append(Block(_width: 1, _height: 1, _id: 8).set(coordinate: (2, 3)))
-        //        blocks.append(Block(_width: 1, _height: 2, _id: 3).set(coordinate: (3, 2)))
-        //        blocks.append(Block(_width: 1, _height: 1, _id: 6).set(coordinate: (0, 4)))
-        //        blocks.append(Block(_width: 1, _height: 1, _id: 9).set(coordinate: (3, 4)))
+        blocks.removeAll()
+        for person in Person.people {
+            blocks.append(Block(_width: person.width, _height: person.height, _id: person.id).set(coordinate: person.coordinate))
+        }
+
     }
     
     func encode() {
@@ -293,7 +277,20 @@ class RawAI {
     
     
     func search(and completion: (String) -> ()) {
+        state = Array(repeating: Array(repeating: BlockType.foo, count: 4), count: 5)
+        board = Array(repeating: Array(repeating: -1, count: 4), count: 5)
         initBoard()
+        while !swiftyQueue.isEmpty {
+            swiftyQueue.dequeue()
+        }
+        backtrackSteps.removeAll()
+        ts.removeAll()
+        fullCodeAt.removeAll()
+        depthFor.removeAll()
+        layoutWasVisited.removeAll()
+        st.removeAll()
+        numberOfLayoutsVisited = 0
+        parents = Array(repeating: 0, count: 30000)
         
         encode()
         
@@ -363,19 +360,20 @@ extension RawAI {
     }
     
     
-    func recursivelyDecode(layout: String, and completion: () -> ()) {
+    func recursivelyDecode(layout: String, and completion: () -> ()) -> [[(Int, Int)]] {
         if st[layout] == 0 {
             decode(string: fullCodeAt[st[layout]!]!)
             //printSolution(encoding: layout)
             backtrackSteps = backtrackSteps.reversed()
-            for step in backtrackSteps {
-                print(step)
-            }
-            completion()
-            return
+//            for step in backtrackSteps {
+//                print(step)
+//            }
+            
+            return backtrackSteps
         }
         decode(string: fullCodeAt[st[layout]!]!)
         recursivelyDecode(layout: ts[parents[st[layout]!]]!, and: completion)
+        return []
     }
 }
 
