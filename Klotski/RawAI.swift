@@ -38,6 +38,34 @@ class RawAI {
     
     var blocks: [Block] = []
     
+    var fuckArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
+    
+    
+    func printBoard() {
+        for i in 0..<5 {
+            for j in 0..<4 {
+                print(((board[i][j] >= 0 ? fuckArr[board[i][j]] : " ") + " "), terminator: "")
+            }
+            print(" ")
+        }
+        print(" ")
+    }
+    
+    
+    func printSolution(encoding: String) {
+        if st[encoding] == 0 {
+            print("0")
+            setCurrentBoardFrom(encoding: fullCodeAt[st[encoding]!]!)
+            printBoard()
+            return
+        }
+        printSolution(encoding: ts[parents[st[encoding]!]]!)
+        print(depthFor[encoding])
+        setCurrentBoardFrom(encoding: fullCodeAt[st[encoding]!]!)
+        printBoard()
+    }
+    
+    
     func initBoard() {
         blocks.append(Block(_width: 1, _height: 2, _id: 0).set(coordinate: (0, 0)))
         blocks.append(Block(_width: 2, _height: 2, _id: 1).set(coordinate: (1, 0)))
@@ -74,7 +102,7 @@ class RawAI {
     func setCurrentBoardFrom(encoding: String) {
         var foo = ""
         foo = currentStateCodeFrom(encoding: encoding)
-        print(foo)
+        //print(foo)
         state = Array(repeating: Array(repeating: BlockType.foo, count: 4), count: 5)
         board = Array(repeating: Array(repeating: -1, count: 4), count: 5)
         
@@ -118,7 +146,7 @@ class RawAI {
 //    }
     
     func didWin() -> Bool {
-        print(state[3][1].rawValue)
+        //print(state[3][1].rawValue)
         return (state[3][1].rawValue == state[3][2].rawValue && state[3][2].rawValue == state[4][1].rawValue &&
             state[4][1].rawValue == state[4][2].rawValue && state[4][1].rawValue == 4)
     }
@@ -139,27 +167,27 @@ class RawAI {
         switch direction {
         case 0:
             if block.canGoLeft {
-                block.goLeft {
-                    
-                }
+                block.goLeft()
+            } else {
+                return false
             }
         case 1:
             if block.canGoRight {
-                block.goRight {
-                    
-                }
+                block.goRight()
+            } else {
+                return false
             }
         case 2:
             if block.canGoUp {
-                block.goUp {
-                    
-                }
+                block.goUp()
+            } else {
+                return false
             }
         case 3:
             if block.canGoDown {
-                block.goDown {
-                    
-                }
+                block.goDown()
+            } else {
+                return false
             }
         default:
             return false
@@ -170,7 +198,7 @@ class RawAI {
         if layoutWasVisited[layout] == nil {
             updateCurrent(subLayout: layout, currentLayout: currentLayout)
             if didWin() {
-                print("We Won!")
+                //printSolution(encoding: layout)
                 return true
             }
             //Omitted
@@ -178,23 +206,15 @@ class RawAI {
         
         switch direction {
         case 0:
-                block.goRight {
-                    
-                }
+                block.goRight()
         case 1:
-                block.goLeft {
-                    
-                }
+                block.goLeft()
         case 2:
-                block.goDown {
-                    
-                }
+                block.goDown()
         case 3:
-                block.goUp {
-                    
-                }
+                block.goUp()
         default:
-            return false
+            break
         }
         return false
     }
@@ -220,13 +240,20 @@ class RawAI {
         
         while queue.count != 0 {
             let cur = queue[0]
+//            print("Queue")
+//            for cur in queue {
+//                print(cur)
+//            }
+            //printBoard()
             queue.remove(at: 0)
-
             
+            //print(cur)
             setCurrentBoardFrom(encoding: fullCodeAt[st[cur]!]!)
+            //printBoard()
             encode()
-            //print(code)
+            ////print(code)
             for block in blocks {
+                
                 if move(block: block, currentLayout: cur, direction: 0) {
                     return
                 }

@@ -26,6 +26,7 @@
 		B1A1EF521DE1D2B500AECC0D /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A1EF511DE1D2B500AECC0D /* Layout.swift */; };
 		B1A1EF541DE1D51700AECC0D /* AI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A1EF531DE1D51700AECC0D /* AI.swift */; };
 		B1A1EF561DE1DC5D00AECC0D /* SwiftyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A1EF551DE1DC5D00AECC0D /* SwiftyQueue.swift */; };
+		B1B738951E0D30E50007F97E /* RawAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18C49D01E0C3A020052E5ED /* RawAI.swift */; };
 		BAC8DFBB45EFAD209384EE13 /* Pods_Klotski.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 382FDB74FE5FC1FDB1A59DC6 /* Pods_Klotski.framework */; };
 /* End PBXBuildFile section */
 
@@ -305,6 +306,7 @@
 			files = (
 				B15B48311E0B6A6D00B3C525 /* Person.swift in Sources */,
 				B18C49D41E0C4E430052E5ED /* Block.swift in Sources */,
+				B1B738951E0D30E50007F97E /* RawAI.swift in Sources */,
 				B15B48321E0B6A7000B3C525 /* Layout.swift in Sources */,
 				B15B48331E0B6A7300B3C525 /* Random.swift in Sources */,
 				B15B48341E0B6A9300B3C525 /* SwiftyQueue.swift in Sources */,

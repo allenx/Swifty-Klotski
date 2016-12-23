@@ -30,7 +30,7 @@ class KlotskiTests: XCTestCase {
         self.measure {
             // Put the code you want to measure the time of here.
             //AI.shared.search()
-            AI.shared.randomSearch1()
+            RawAI.shared.search()
         }
     }
     

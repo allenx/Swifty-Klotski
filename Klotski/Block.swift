@@ -123,7 +123,7 @@ class Block {
         }
     }
     
-    func goLeft(and completion: () -> ()) {
+    func goLeft() {
         if !canGoLeft {
             return
         }
@@ -136,12 +136,12 @@ class Block {
         RawAI.shared.state[coordinate.y+_height-1][coordinate.x-1] = type
         RawAI.shared.board[coordinate.y][coordinate.x-1] = id
         RawAI.shared.board[coordinate.y+_height-1][coordinate.x-1] = id
-        //print("left")
+//        print("left")
         coordinate.x -= 1;
-        completion()
+        
     }
     
-    func goRight(and completion: () -> ()) {
+    func goRight() {
         if !canGoRight {
             return
         }
@@ -156,10 +156,10 @@ class Block {
         RawAI.shared.board[coordinate.y+_height-1][coordinate.x+_width] = id
 //        print("right")
         coordinate.x += 1;
-        completion()
+        
     }
     
-    func goUp(and completion: () -> ()) {
+    func goUp() {
         if !canGoUp {
             return
         }
@@ -174,10 +174,10 @@ class Block {
         RawAI.shared.board[coordinate.y-1][coordinate.x+_width-1] = id
 //        print("up")
         coordinate.y -= 1
-        completion()
+        
     }
     
-    func goDown(and completion: () -> ()) {
+    func goDown() {
         if !canGoDown {
             return
         }
@@ -192,7 +192,7 @@ class Block {
         RawAI.shared.board[coordinate.y+_height][coordinate.x+_width-1] = id
 //        print("down")
         coordinate.y += 1
-        completion()
+        
     }
     
 }
