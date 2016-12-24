@@ -96,6 +96,8 @@ class GameScene: SKScene {
     var sound = SKAction.playSoundFileNamed("jingetiema.mp3", waitForCompletion: false)
     let audioNode = SKAudioNode(fileNamed: "jingetiema.mp3")
     
+    var timer: Timer? = nil
+    
     override func didMove(to view: SKView) {
         addChild(audioNode)
         nodesArray = [ZhaoYun, CaoCao, HuangZhong, MaChao, GuanYu, Soldier1, Soldier2, ZhangFei, Soldier3, Soldier4]
@@ -259,6 +261,11 @@ class GameScene: SKScene {
     
     func findPath(and completion: () -> ()) {
         stepTracker = 0
+        for foo in (view?.subviews)! {
+            if foo is SpringButton {
+                (foo as! SpringButton).isEnabled = false
+            }
+        }
         RawAI.shared.search {
             stateLayout in
             RawAI.shared.recursivelyDecode(layout: stateLayout) {
@@ -274,12 +281,23 @@ class GameScene: SKScene {
     
     
     func automaticallyStepIn() {
-        let timer = Timer.scheduledTimer(timeInterval: 0.9, target:self,selector: #selector(stepIn), userInfo:nil, repeats:true)
-        timer.fire()
+        timer?.invalidate()
+        timer = nil
+        timer = Timer.scheduledTimer(timeInterval: 0.9, target:self,selector: #selector(stepIn), userInfo:nil, repeats:true)
     }
     
     func stepIn() {
+        for foo in (view?.subviews)! {
+            if foo is SpringButton {
+                (foo as! SpringButton).isEnabled = false
+            }
+        }
         if stepTracker == RawAI.shared.backtrackSteps.count || RawAI.shared.backtrackSteps.isEmpty {
+            for foo in (view?.subviews)! {
+                if foo is SpringButton {
+                    (foo as! SpringButton).isEnabled = true
+                }
+            }
             return
         }
         
