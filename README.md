@@ -1,65 +1,99 @@
 # Swifty-Klotski
 
-## 问题分析
+> A Klotski game with a powerful searching AI built in, completely implemented in Swift.
 
-首先我们知道，华容道的格局是一个4x5的棋牌，并且每个棋盘的格局对应的大将（张飞、关羽、黄忠、马超、赵云）在棋盘中的坐标都是不一样的。例如，**横刀立马**的格局如下: 
+## About Klotski
+
+Klotski (华容道 in Chinese), is a sliding block puzzle with special `layouts` of 10 different blocks and the aim of Klotski is to move a specific block, aka, `CaoCao`, to some predefined location.
+
+We built Swifty-Klotski in which an AI can automatically search for `feasible` solutions to a layout.
+
+## Interpreting the Puzzel in Math
+
+> Coordinate Mapping. 
+
+### Mapping Layouts to a Coordinate System
+
+Klotski has a 4x5 board with 10 different blocks at different positions. We mapped the board to a simple coordinate system, making it easy to represent different layouts using xAxis and yAxis values.
+
+<img src="http://ogbzxx07e.bkt.clouddn.com/Coordinate.png" width="200px">
+
+In the coordinate system above, every block's position can be represented by it's top left point's coordinate.
+
+For example, in the layout HengDaoLiMa(横刀立马 in Chinese), the layout is as follows:
 
 ![HengDaoLiMa](http://ogbzxx07e.bkt.clouddn.com/HengDaoLiMa.png)
 
-- 我们定义每个人物的坐标为该人物的棋子左上角的坐标。并且我们遍历人物的坐标是从棋盘上的左上角开始，从左到右，从上到下遍历，我们在算法中运用了该方法。
-- 在该图片中，我们可以看到，`张飞`的坐标为（0, 0），`曹操`的坐标在（1，0），`赵云`的坐标为（3, 0），`马超`的坐标为（0， 2），`关羽`的坐标为（1， 2），`黄忠`的坐标为（3， 2），`卒1`的坐标为（0， 4），`卒2`的坐标为（1， 3），`卒3`的坐标为（2， 3），`卒4`的坐标（3， 4 ）。我们游戏胜利的条件即为：`曹操`的坐标为（1， 3）。
-- 首先我们将每个棋盘的格局中的每个人物坐标都读取出来，然后将这些人物的坐标读进我们实现的算法中，输出算法结果即`曹操`是如何走出华容道。
+(Above is a screenshot of our Klotski game)
 
-那么我们知道了以上的信息，我们就要开始思考如何通过一个人工智能的方法将`曹操`安全（即不违反游戏规则）的走到出口。
+In this picture, we can represent the layout as: 
 
+```swift
+ZhaoYun.coordinate = (0, 0); ZhaoYun.width = 1; ZhaoYun.height = 2
+CaoCao.coordinate = (1, 0); CaoCao.width = 2; CaoCao.height = 2;
+HuangZhong.coordinate = (3, 0); HuangZhong.width = 1; HuangZhong.height = 2;
+MaChao.coordinate = (0, 2); MaChao.width = 1; MaChao.height = 2;
+GuanYu.coordinate = (1, 2); GuanYu.width = 2; GuanYu.height = 1;
+Soldier1.coordinate = (0, 4); Soldier1.width = 1; Soldier1.height = 1;
+Soldier2.coordinate = (1, 3); Soldier2.width = 1; Soldier2.height = 1;
+ZhangFei.coordinate = (3, 2); ZhangFei.width = 1; ZhangFei.height = 2;
+Soldier3.coordinate = (2, 3); Soldier3.width = 1; Soldier3.height = 1;
+Soldier4.coordinate = (3, 4); Soldier4.width = 1; Soldier4.height = 1;
+```
 
+And all we need to do is to move `CaoCao` from its original postion (1, 0) to its destination (1, 4)
 
-## 解决方案
+## How We Made It
 
-对于该项目，我们经过讨论，为了使我们的项目更加直观和美观，我们决定采用 Swift 3 进行编写，该语言是 Apple 公司发布的专门为编写 iOS 应用的开发人员使用的一种语言。
+> Swift, Breadth First Searching Algorithm, SpriteKit
 
-使用该语言的优点有
+We decided to implement this game in a fun way, that is, to make it a real game with **Fabulous GUI** instead of some **Lame Console Output**. And that's why we are using **Swift** and **SpriteKit** to make this great iOS game.
 
-- Swift 意味 “迅速、敏捷”，正如它的名字一样，它能加快应用程序的开发速度，同 Objective-C、C 更好地协作。同时，Swift 和脚本语言一样，非常富有表现力，能让人们更自然地对它进行阅读和编写。
+Swift is an easy-to-use programming language with many Functional-Programming features and it's lightning fast like its name. iOS is a powerful system with a powerful and elegant GUI framework which is called Cocoa Touch and SpriteKit is part of Cocoa Touch which empowers developers to make games in easier ways.
 
-- Swift 还拥有自动内存管理功能，苹果承诺它可以阻止一些开发者常见错误（如在变量初始化和数据溢出方面）的发生。
+The most important thing is that, how we wrote this AI. Using **Breadth First Searching Algorithm** is how we did it. No. Using **Breadth First Searching** with a lot of **Pruning** is how we did it.
 
-  以上就是我们为什么使用Swift的原因，总之它可是使我们更加容易发现编写项目过程中出现的BUG，可以提高我们项目的完成速度，并且该语言的可读性非常强。                                                                         
+1. In the **Queue** for **BFS**, we enque every layout the AI searched.
+2. We deque the first layout in the **Queue** and see if it's already **visited**. If it has been already visited, we dump it immediately and go into the next loop. If not, we expand it and get its sublayouts and enqueue those sublayouts.
+3. After each expanding in step 2, we check if `CaoCao` has reached its destination (1, 4). If not, repeat step 2. If it has, do the **backtrack** in step 4.
+4. **Backtrack** those layouts that lead us to the destination and show them in the correct order.
 
+Above is how we designed the game logic, to implement this logic we've taken 2 different ways, and the details are as follows.
 
+## Algorithm Details
 
-## 实现纲要
+### First Implementation.
 
-1. 我们运用的搜索方法为：广度优先算法。在使用广度优先算法的队列中，我们将搜索到的每个格局都放进队列中，由于我们每次用广度搜索算法的时候都是在棋盘的格局上从左到右，从上到下的进行搜索，通过测试这样出现的棋盘格局的所遭遇的重复项比较多，能是剪枝力度更大。
-2. 我们每次将队头中的棋盘格局即10个人物的坐标进行扩展，即我们要遍历10个人物坐标，并且通过一定的条件来进行判断当前这个人物往哪些方向可走，人物所走的方向有：上，下，左，右。
-3. 当某个人物进行移动后，将该移动后的格局放入队尾，重复步骤2和步骤3，以此类推，直到找到一个符合游戏胜利的格局。
-4. 当我们找到游戏胜利的格局后，我们通过回溯算法，从该格局一直回溯到初始格局，回溯完成后，即可输出结果。
-
-
-
-## 最初实现
-
+> Highly Object-Oriented. Naïve Thinking. Slow AI.
+>
 > AI.swift Person.swift Layout.swift SwiftyQueue.swift
 
-### 算法描述 & 设计思路：
+#### Storing Positions and Layouts
 
-​	面对华容道问题首先我们考虑的问题是如何存储格局，很自然的就想到用到坐标系。首先我们以左上角为坐标原点，然后使用 2 个相邻整数表示该人物的横、纵坐标，最后将所有人的横、纵坐标连成用一个字符串，即可获得当前的格局编码，首先想到的是用一个 `Int` 类型的数值来表示，但是因为需要记录 10 个人物的坐标信息，需要 20 位长度的 `Int` 数值，但是这样的想法在实现的过程中出现了超出 `Int` 表示范围的情况，然后就想到了使用一个`元组`的形式表示，同时格局具有一个指针 `superLayout` 指向其父格局，而对于整个格局我们作为一个类 `Layout`:
+Now that we represent every block's position using their top-left coordinate, how are we gonna represent a Layout? An array of block in which every block has its own coordinate stored? Yuck, it's gonna be a nightmare for the AI to compute. 
+
+So we've come up with an encoding method. Every one's coordinate has two values which are x and y. Combining those values into a sequence of digits sounds like a feasible way. Like in `HengDaoLiMa`, the code will be 00103002120413322334. That's a lot of digits, 20 in total. And in our 64-bit system and hardware, the maximum of an Int value is no more than 20 digits so it's gonna crash the system. 
+
+Then can we store the code as a String value? That would be not very efficient because we need to do comparison between different layout and String comparison might be slow because we can't do Binary-Sort-Search with String values.
+
+So we decided to seperate this code into 2 part using a Tuple. And now the code for `HengDaoLiMa` will be (00103002120413, 322334).
+
+And our `Layout` Class is as follows:
 
 ```swift
 class Layout {
-//its super layout
-let superLayout: Layout?
-
-//current layout represented as an Int value
-let value: (lhs: Int, rhs: Int)
-
-init(superLayout: Layout?, value: (lhs: Int, rhs: Int)) {
-    self.superLayout = superLayout
-    self.value = value
-	}
+	//its super layout
+	let superLayout: Layout?
+	//current layout represented as an (Int, Int) value
+	let value: (lhs: Int, rhs: Int)
 }
 ```
-​	第二个需要表示的方面是界面上的人物信息，我们对于每个人物需要记录的信息为其名字，长度和宽度以及其坐标，同时我们也记录其相邻人物的信息，记录相邻信息是通过一个 `Opitional` 数组来实现的，如果某个方位的数组为 `nil` 则它的该方位为边界，如果某个方位没有相邻人物，则当前方位指针数组为空数组:
+
+A Layout has a property `superLayout`, which is its super layout, and it has a value which is the tuple for the digit sequence.
+
+With `superLayout`, we are able to backtrack every step that leads to success, simply by doing `layout.superLayout.superLayout…..`
+
+Now how are we gonna represent our blocks? Here comes our classs  `Person`.
 
 ```swift
 class Person {
@@ -68,35 +102,28 @@ class Person {
 	let height: Int
 
 	var coordinate: (x: Int, y: Int)
-	var positionVal: Int {
-    	get {
-       	 	return coordinate.x * 10 + coordinate.y
-    	}
-	}
 
+	//An empty array means it has no neighbours on the direction.
+	//A nil value means it's at the the edge of the board on that direction
 	var left: [Person]? = []
 	var right: [Person]? = []
 	var top: [Person]? = []
 	var bottom: [Person]? = []
-
-	init(width: Int, height: Int, coordinate: (x: Int, y: Int), name: String) {
-    	self.width = width
-    	self.height = height
-    	self.coordinate = coordinate
-    	self.name = name
+	
+	//The function which makes a person go up in the board. Similar goDown, goRight, goLeft are omitted.
+	func goUp(and completion: () -> ()) {
+    	self.coordinate.y -= 1
+    	completion()
+    	self.coordinate.y += 1
 	}
 }
 ```
-人物同样具有向左，右，上，下移动的动作，以左为例，当人物左走以后完成一些操作之后会回退到原来的位置:
 
-```swift
-func goUp(and completion: () -> ()) {
-    self.coordinate.y -= 1
-    completion()
-    self.coordinate.y += 1
-}
-```
-然后需要新建华容道中的人物并赋上其具有的各种属性:
+We treat each block as an individual, a Person. Each person has its name, width, height and coordinate. And what's also very important is that it has 4 optional arrays `left`, `right`, `top`, `bottom`. For example, if `left` is `nil`, it means the person is at the left edge of the board and cannot go further left. If `left` is an empty array `[]`, it means that the there are no other people are on its left side and it's ok to go left. Otherwise the person cannot go left.
+
+`func goUp(and completion: () -> ())` is an interesting function. If a person goes up, its y should substract 1, and that's for sure. But why am I adding 1 back at the end of the function? That is because we can't change the person's coordinate yet because it still needs to be judged that if it can go in other directions. 
+
+We have static members of `Person` , representing the 10 blocks in the game:
 
 ```swift
  static let CaoCao = Person(width: 2, height: 2, coordinate: (2, 1), name: "曹操")
@@ -111,134 +138,147 @@ func goUp(and completion: () -> ()) {
  static let Soldier4 = Person(width: 1, height: 1, coordinate: (4, 5), name: "士兵4")
 ```
 
-对于我们如何判断人物的周围人物信息，我们采用函数 `assignNeighbours()`来进行判断，首先设置人物的四周初始化为空数组。
+#### Determining If a Person Can Go Left, Right, Up or Down
 
-(1)该人物的横坐标为 1，则代表他在格局的最左边，其左边为边界;
+We have 4 principles about this (left for example):
 
-(2)当一个人物的横坐标加上该人物的宽度等于当前人物的横坐标，则表示该人物在当前人物的左边;
+1. If the person's coordinate.x is 0, it means it's at the left edge and it cannot go left. If not, go step 2.
+2. If B.coordinate.x + B.width == A.coordinate.x, it means that B is at the neigbouring left column of A. Go step 3.
+3. If B and A are intersected in the direction of yAxis like 2 lines overlapping, A.left.append(B), meaning B is a left neighbour of A.
 
-(3)当人物的横坐标加上人物的宽度大于 4 时，则代表人物在最右边;
-
-(4)当一个人物的横坐标等于当前人物的横坐标加上其宽度，则表示该人物在当前人物的右边;
-
-上方和下方人物情况类似;
+This is what our `assignNeighbours()` looks like:
 
 ```swift
+//Instance Methods of class AI
 func assignNeighbours() {
-        for person in AI.people {
-            person.left = []
-            person.right = []
-            person.top = []
-            person.bottom = []
-            for i in 0..<10 {
-                let personCursor = AI.people[i]
-                if personCursor.positionVal != person.positionVal {
-                    //See left
-                    if person.coordinate.x == 1 {
-                        person.left = nil
-                    } else {
-                        //                        person.left = []
-                        if personCursor.coordinate.x + personCursor.width == person.coordinate.x && areIntersected(lhs: (personCursor.coordinate.y, personCursor.coordinate.y + personCursor.height), rhs: (person.coordinate.y, person.coordinate.y + person.height)) {
-                            person.left?.append(personCursor)
-                        }
-                    }
-                    
-                    //See right
-                    if person.coordinate.x + person.width > 4 {
-                        person.right = nil
-                    } else {
-                        //                        person.right = []
-                        if personCursor.coordinate.x == person.coordinate.x + person.width && areIntersected(lhs: (personCursor.coordinate.y, personCursor.coordinate.y + personCursor.height), rhs: (person.coordinate.y, person.coordinate.y + person.height)) {
-                            person.right?.append(personCursor)
-                        }
-                    }
-                    
-                    //See top
-                    if person.coordinate.y == 1 {
-                        person.top = nil
-                    } else {
-                        //                        person.top = []
-                        if personCursor.coordinate.y + personCursor.height == person.coordinate.y && areIntersected(lhs: (personCursor.coordinate.x, personCursor.coordinate.x + personCursor.width), rhs: (person.coordinate.x, person.coordinate.x + person.width)) {
-                            person.top?.append(personCursor)
-                        }
-                    }
-                    
-                    //See bottom
-                    if person.coordinate.y + person.height > 5 {
-                        person.bottom = nil
-                    } else {
-                        //                        person.bottom = []
-                        if personCursor.coordinate.y == person.coordinate.y + person.height && areIntersected(lhs: (personCursor.coordinate.x, personCursor.coordinate.x + personCursor.width), rhs: (person.coordinate.x, person.coordinate.x + person.width)) {
-                            person.bottom?.append(personCursor)
-                        }
-                    }
-                }
-            }
-        }
-    }
-```
-
-接下来我们需要做的就是进行最核心的广度优先搜索，即格局的扩展，保存，以及判断重复格局剪枝的过程，为了加快查询重复格局，我们采用二分查找的方式，在每次扩展当前格局时，先在格局数组中使用二分查找 + 二分插入的方式，先对格局表进行查找以确定当前格局是否已经出现过，如果出现，则将当前格局出队列并且不对该格局进行扩展。反之，则将该格局放入格局数组中，表示该格局已经生成。因为这个格局编码不是简单的整型数据，所以首先检查编码元组的左边部分，如果在编码数组中有相同的，再对编码元组的右边部分进行判断，如果相同则说明格局已经为重复格局，则将当前队头出队，如果右边部分小于编码中已经存在的格局编码的右边部分，则将其插入在当前位置，如果右边部分大于编码中已经存在的格局编码的左边部分，则将其插入在当前位置+1的位置。当然编码左边不同的情况则可直接插入，结束条件为当曹操的坐标为 (4, 2)，搜索即可结束。
-
-```swift
-func binaryInsert(value: (lhs: Int, rhs: Int)) -> Bool {
-        var lowerIndex = 0
-        var upperIndex = AI.valueArr.count - 1
-        var currentIndex: Int = 0
-        
-        
-        if AI.valueArr.count == 0 {
-            AI.valueArr.insert(value, at: currentIndex)
-            return true
-        }
-        
-        while lowerIndex <= upperIndex {
-            //print("Searching")
-            currentIndex = (upperIndex - lowerIndex) / 2 + lowerIndex
-            if AI.valueArr[currentIndex].lhs == value.lhs {
-                if AI.valueArr[currentIndex].rhs == value.rhs {
-                    print("Pruned")
-                    return false
-                }
-                if AI.valueArr[currentIndex].rhs < value.rhs {
-                    AI.valueArr.insert(value, at: currentIndex + 1)
-                    return true
-                } else {
-                    AI.valueArr.insert(value, at: currentIndex)
-                    return true
-                }
+	for person in AI.people {
+    	person.left = []
+        person.right = []
+        person.top = []
+        person.bottom = []
+        for i in 0..<10 {
+        let personCursor = AI.people[i]
+        if personCursor.positionVal != person.positionVal {
+        	//See left
+            if person.coordinate.x == 1 {
+    	        person.left = nil
             } else {
-                if AI.valueArr[currentIndex].lhs > value.lhs {
-                    upperIndex = currentIndex - 1
-                } else {
-                    lowerIndex = currentIndex + 1
+            	if personCursor.coordinate.x + personCursor.width == person.coordinate.x && areIntersected(lhs: (personCursor.coordinate.y, personCursor.coordinate.y + personCursor.height), rhs: (person.coordinate.y, person.coordinate.y + person.height)) {
+                	person.left?.append(personCursor)
                 }
-            }
-        }
-        AI.valueArr.insert(value, at: currentIndex)
-        return true
-    }
-```
+            }       
+           	//See right
+            if person.coordinate.x + person.width > 4 {
+            	person.right = nil
+            } else {
+            	if personCursor.coordinate.x == person.coordinate.x + person.width && areIntersected(lhs: (personCursor.coordinate.y, personCursor.coordinate.y + personCursor.height), rhs: (person.coordinate.y, person.coordinate.y + person.height)) {
+                	person.right?.append(personCursor)
+                }
+            }     
+            //See top
+            if person.coordinate.y == 1 {
+            	person.top = nil
+            } else {
+            	if personCursor.coordinate.y + personCursor.height == person.coordinate.y && areIntersected(lhs: (personCursor.coordinate.x, personCursor.coordinate.x + personCursor.width), rhs: (person.coordinate.x, person.coordinate.x + person.width)) {
+					person.top?.append(personCursor)
+				}
+			}
+			//See bottom
+			if person.coordinate.y + person.height > 5 {
+				person.bottom = nil
+			} else {
+				if personCursor.coordinate.y == person.coordinate.y + person.height && areIntersected(lhs: (personCursor.coordinate.x, personCursor.coordinate.x + personCursor.width), rhs: (person.coordinate.x, person.coordinate.x + person.width)) {
+					person.bottom?.append(personCursor)
+				}
+			}
+		}
+	}
+}
 
-最后在优化的时候，我们增加了随机因子，用以提高搜索效率:
-
-```swift
-func insert(value: (lhs: Int, rhs: Int)) -> Bool {
-        for eachValue in AI.valueArr {
-            if value == eachValue {
-                return false
-            }
-        }
-        let index = Int(Random.random(number: UInt32(AI.valueArr.count)))
-        AI.valueArr.insert(value, at: index)
-        //AI.valueArr.append(value)
-        return true
+func areIntersected(lhs: (min: Int, max: Int), rhs: (min: Int, max: Int)) -> Bool {
+	if lhs.max - lhs.min > rhs.max - rhs.min {
+		if (rhs.max < lhs.max && rhs.max > lhs.min) || (rhs.min > lhs.min && rhs.min < lhs.max) {
+			return true
+		}
+	} else if lhs.max - lhs.min == rhs.max - rhs.min {
+		if (lhs.max == rhs.max && lhs.min == rhs.min) || (rhs.max < lhs.max && rhs.max > lhs.min) || (rhs.min > lhs.min && rhs.min < lhs.max) || (lhs.max < rhs.max && lhs.max > rhs.min) || (lhs.min < rhs.max && lhs.min > rhs.min) {
+			return true
+		}
+	} else {
+		if (lhs.max < rhs.max && lhs.max > rhs.min) || (lhs.min < rhs.max && lhs.min > rhs.min) {
+			return true
+		}
+	}
+	return false
 }
 ```
 
 
 
-### Class Reference:
+#### Storing Visited Layouts
+
+We store visted layouts in an array in our first implementation. And we do `Binary Insert` and `Binary Search` every time we insert a new layout and search for repeated layout.
+
+Here's our `binaryInsert(value: (lhs: Int, rhs: Int)) -> Bool`
+
+```swift
+func binaryInsert(value: (lhs: Int, rhs: Int)) -> Bool {
+	var lowerIndex = 0
+    var upperIndex = AI.valueArr.count - 1
+    var currentIndex: Int = 0
+    
+	if AI.valueArr.count == 0 {
+		AI.valueArr.insert(value, at: currentIndex)
+		return true
+	}  
+	while lowerIndex <= upperIndex {
+		//print("Searching")
+		currentIndex = (upperIndex - lowerIndex) / 2 + lowerIndex
+		if AI.valueArr[currentIndex].lhs == value.lhs {
+			if AI.valueArr[currentIndex].rhs == value.rhs {
+				print("Pruned")
+				return false
+			}
+			if AI.valueArr[currentIndex].rhs < value.rhs {
+				AI.valueArr.insert(value, at: currentIndex + 1)
+                return true
+			} else {
+				AI.valueArr.insert(value, at: currentIndex)
+                return true
+            }
+		} else {
+			if AI.valueArr[currentIndex].lhs > value.lhs {
+				upperIndex = currentIndex - 1
+            } else {
+				lowerIndex = currentIndex + 1
+			}
+		}
+	}
+	AI.valueArr.insert(value, at: currentIndex)
+	return true
+}
+```
+
+Alongside with `binaryInsert`, we have this normal `insert` function with some **random flavor** added into in.
+
+```swift
+func insert(value: (lhs: Int, rhs: Int)) -> Bool {
+	for eachValue in AI.valueArr {
+		if value == eachValue {
+			return false
+		}
+	}
+	let index = Int(Random.random(number: UInt32(AI.valueArr.count)))
+	AI.valueArr.insert(value, at: index)
+	return true
+}
+```
+
+This `insert` function does not append new values into the array, it inserts new values at a random index. And guess what, this **Random Factor** helped us make the searching speed **2x faster** because it gives AI **a better chance** on hitting the targeted layout.
+
+
+
+#### References
 
 | CLASS         | DISCRIPTION                              |
 | :------------ | :--------------------------------------- |
@@ -250,14 +290,14 @@ func insert(value: (lhs: Int, rhs: Int)) -> Bool {
 | `RawAI`       | second AI to implement the algorithm     |
 | `SwiftyQueue` | SwiftyQueue is a queue used in the algorithm |
 
-For the `AI` Class:
+For the class `AI`:
 
-| PROPERTIES                             | DISCRIPTION                              |
-| :------------------------------------- | :--------------------------------------- |
-| `var people: [Person]`                 | an array to store all the characters     |
-| `let queue: SwiftyQueue`               | Queue is to implement BFS alogrithm      |
-| `var valueArr: [(lhs: Int, rhs: Int)]` | This array stores codes of different layout |
-| `static let shared = AI()`             | shared instace of AI                     |
+| PROPERTIES                               | DISCRIPTION                              |
+| :--------------------------------------- | :--------------------------------------- |
+| `var people: [Person]`                   | an array to store all the characters     |
+| `let queue: SwiftyQueue`                 | Queue is to implement BFS alogrithm      |
+| `static var valueArr: [(lhs: Int, rhs: Int)]` | This array stores codes of different layout |
+| `static let shared = AI()`               | shared instace of AI                     |
 
 | INSTANCE METHODS                         | DISCRIPTION                              |
 | ---------------------------------------- | ---------------------------------------- |
@@ -267,43 +307,17 @@ For the `AI` Class:
 | `func didWin() -> Bool`                  | check if it wins or not                  |
 | `func backtrack(layout: Layout)`         | find the final solution                  |
 | `func setCurrentPeopleFrom(layout: Layout)` | set the current queue_front              |
-| `func randomSearch()`                    |                                          |
+| `func randomSearch()`                    | search with random factor                |
 | `func areIntersected( lhs: (min: Int, max: Int), rhs: (min: Int, max: Int) -> Bool` | check if the current character can move or not |
-| `func removeDuplicates( includeElement: @escaping (_ lhs:Element, _ rhs:Element) -> Bool) -> [Element]` | remove duplicates from an array          |
 
-For the Block Class
+For class `Layout`:
 
-| PROPERTIES                         | DISCRIPTION                           |
-| ---------------------------------- | ------------------------------------- |
-| `var coordinate: (x: Int, y: Int)` | coordinate of the character(private)  |
-| `fileprivate let _width: Int`      | the width of the character(private)   |
-| `fileprivate let _height: Int`     | the height of the character(private)  |
-| `fileprivate let _id: Int`         | the id of the character(private)      |
-| `var width: Int { get }`           | returns the width                     |
-| `var height: Int { get }`          | returns the height                    |
-| `var id: Int { get }`              | returns the id                        |
-| `var type: BlockType { get }`      | type of the character                 |
-| `var canGoLeft: Bool { get }`      | indicates if it can move left or not  |
-| `var canGoRight { get }`           | indicates if it can move right or not |
-| `var canGoUp { get }`              | indicates if it can move up or not    |
-| `var canGoDown { get }`            | indicates  if it can move down or not |
+| PROPERTIES                       | DISCRIPTION                    |
+| -------------------------------- | ------------------------------ |
+| `let superLayout: Layout`        | its superLayout                |
+| `let value: (lhs: Int, rhs: Int) | the code of the current layout |
 
-| INSTANCE METHODS                         | DISCRIPTION                       |
-| ---------------------------------------- | --------------------------------- |
-| `func set (coordinate: (x: Int, y: Int))` | set the coordinate of a character |
-| `func goLeft ()`                         | go left and update the state      |
-| `func goRight ()`                        | go right and update the state     |
-| `func goUp ()`                           | go up and update the state        |
-| `func goDown ()`                         | go down and update the state      |
-
-For the `Layout` Class
-
-| PROPERTIES                        | DISCRIPTION                    |
-| --------------------------------- | ------------------------------ |
-| `let superLayout: Layout`         | its superLayout                |
-| `let value: (lhs: Int, rhs: Int)` | the code of the current layout |
-
-For the `Person` Class
+For class `Person`:
 
 | PROPERTIES                         | DISCRIPTION                       |
 | ---------------------------------- | --------------------------------- |
@@ -320,7 +334,7 @@ For the `Person` Class
 | `static let GuanYu: Person`        | character GuanYu                  |
 | `static let ZhaoYun: Person`       | character ZhaoYun                 |
 | `static let ZhangFei: Person`      | character ZhangFei                |
-| static let MaChao: Person`         | character MaChao                  |
+| `static let MaChao: Person`        | character MaChao                  |
 | `static let HuangZhong: Person`    | character HuangZhong              |
 | `static let Soldier1: Person`      | character Soldier1                |
 | `static let Soldier2: Person`      | character Soldier2                |
@@ -336,225 +350,186 @@ For the `Person` Class
 
 
 
+### Second Implementation. A Whole New Take.
 
-
-
-
-
-
-## 全新实现
-
+> Raw and Fast. Low-level thinking.
+>
 > Block.swift RawAI.swift
 
-由于之前的算法效率太低，只能很快的处理相对简单的格局。所以我们对整个算法进行了优化:用新的思想来更加高效的完成华容道自动求解:
+We tested some layouts with our first implementation and it turned out **way too slow**. The first implementation can only solve simple puzzles and when it comes to the hard ones, it gets stuck and the AI searches forever, nonstop.
 
-新的思想更加接近底层、所以我们给新的 `AI` 取名为 `RawAI`，一次原始的尝试。
+We are re-thinking at a lower level and that's why we named our new AI as `RawAI`.
 
-首先我们定义了枚举类型的人物形状:
+#### Storing Positions and Layouts
 
-`horizontal` 表示水平放置的 1 * 2 的人物，其值为 3
-
-`vertical` 表示垂直放置的 2 * 1 的人物，其值为 2
-
-`bigSquare` 表示 2 * 2 的人物(即曹操)，其值为 4
-
-`tinySquare` 表示 1 * 1 的小兵，其值为 1
-
-`foo` 表示 1 * 1 的空格白块，其值为 0
+We have Enum type representing each block's type.
 
 ```swift
 enum BlockType: Int {
-    case horizontal = 3
-    case vertical = 2
-    case bigSquare = 4
-    case tinySquare = 1
-    case foo = 0
+    case horizontal = 3 // Horizontally placed block, width = 2, height = 1
+    case vertical = 2 // Vertically placed block, width = 1, height = 2
+    case bigSquare = 4 // CaoCao
+    case tinySquare = 1 // Soldiers
+    case foo = 0 // The two blank blocks on the board
 }
 ```
 
-而新建的 `Block` 类相似于之前建的 `Person` 类，而相比之下，`Block` 更加的原始底层，不那么面向对象，这之后，`Person` 类成为 `Block` 这个 Model 和 UI 的中间连接者。
+Our new class `Block` is similar to the previous `Person` in many ways. It has `coordinate`, `width`, `height`, `id` and `BlockType`
 
-`Block` 的实例具有属性：`coordinate`，`width`，`height`，`id`，`BlockType`
-
-
-
-以及这几个 `Bool` 的属性：`canGoLeft`、`canGoRight`、`canGoUp`、`canGoDown`，以左为例,如果人物坐标的横坐标为 0，则表示该人物应景在最左边的位置，不能够再向左移动了，返回 `false`，而如果该人物方块的左边的 `state` 数组都为 0，即左边都是空白块，可以向左移动，则返回 `true`，其他方向类似:
+And most importantly it has 4 `Bool` properties: `canGoLeft`, `canGoRight`, `canGoUp` and `canGoDown`
 
 ```swift
+//Inside class Block
 var canGoLeft: Bool {
     get {
-            if coordinate.x == 0 {
-                return false
-            }
-            if RawAI.shared.state[coordinate.y][coordinate.x-1] == .foo && RawAI.shared.state[coordinate.y+_height-1][coordinate.x-1] == .foo {
-                return true
-            }
-            return false
-        }
-    }
+		if coordinate.x == 0 {
+			return false
+		}
+		if RawAI.shared.state[coordinate.y][coordinate.x-1] == .foo && RawAI.shared.state[coordinate.y+_height-1][coordinate.x-1] == .foo {
+			return true
+		}
+		return false
+	}
+}
 ```
 
-在判断了之后当然应该时进行移动，所以接下来时 `goLeft`、`goRight`、`goUp`、`goDown`，分别用于函数的左右上下移动，同样以左为例，首先用 `canGoLeft` 函数进行判断，如果是 `false` 则不能左走。反之则该人物方块可以左走，然后将其 `state` 数组格局当前格局的右侧1步范围内的方格都置为 0，而 `board` 数组格局当前格局的右侧 1 步范围内的方格都置为 -1，表示为都已变为空白块。而将其 `state` 数组格局当前格局的左侧1步范围内的方格都置为该人物方块的类型 `type`，确定是什么形状的方块占据该方格，而 `board` 数组格局当前格局的右侧 1 步范围内的方格都置为当前人物 `id`，以说明是谁当前占据这些方格位置:
+Determining the 4 `Bool` properties is easy. We have a 2D array called `state` which stores which position is occupied by which kind of block.
+
+Once a block can go further in a direction, we make it go.
 
 ```swift
+//Inside class Block
+//state and board are two crucial arrays of RawAI
 func goLeft() {
-        if !canGoLeft {
-            return
-        }
-        RawAI.shared.state[coordinate.y][coordinate.x+_width-1] = .foo
-        RawAI.shared.state[coordinate.y+_height-1][coordinate.x+_width-1] = .foo
-        
-        RawAI.shared.board[coordinate.y][coordinate.x+_width-1] = -1
-        RawAI.shared.board[coordinate.y+_height - 1][coordinate.x+_width-1] = -1
-        RawAI.shared.state[coordinate.y][coordinate.x-1] = type
-        RawAI.shared.state[coordinate.y+_height-1][coordinate.x-1] = type
-        RawAI.shared.board[coordinate.y][coordinate.x-1] = id
-        RawAI.shared.board[coordinate.y+_height-1][coordinate.x-1] = id
-//      print("left")
-        coordinate.x -= 1;
+	if !canGoLeft {
+		return
+	}
+	RawAI.shared.state[coordinate.y][coordinate.x+_width-1] = .foo
+    RawAI.shared.state[coordinate.y+_height-1][coordinate.x+_width-1] = .foo  
+	RawAI.shared.board[coordinate.y][coordinate.x+_width-1] = -1
+	RawAI.shared.board[coordinate.y+_height - 1][coordinate.x+_width-1] = -1
+	RawAI.shared.state[coordinate.y][coordinate.x-1] = type
+	RawAI.shared.state[coordinate.y+_height-1][coordinate.x-1] = type
+	RawAI.shared.board[coordinate.y][coordinate.x-1] = id
+	RawAI.shared.board[coordinate.y+_height-1][coordinate.x-1] = id
+	coordinate.x -= 1;
 }
 ```
 
-接下来就是华容道的核心部分，首先初始生成华容道中的人物和坐标
+We store block types in the array `state`, and block ids in the array `board`.
 
-```swift
- func initBoard() {
-        blocks.append(Block(_width: 1, _height: 2, _id: 0).set(coordinate: (0, 0)))
-        blocks.append(Block(_width: 2, _height: 2, _id: 1).set(coordinate: (1, 0)))
-        blocks.append(Block(_width: 1, _height: 2, _id: 2).set(coordinate: (3, 0)))
-        blocks.append(Block(_width: 1, _height: 2, _id: 3).set(coordinate: (0, 2)))
-        blocks.append(Block(_width: 2, _height: 1, _id: 4).set(coordinate: (1, 2)))
-        blocks.append(Block(_width: 1, _height: 1, _id: 5).set(coordinate: (1, 3)))
-        blocks.append(Block(_width: 1, _height: 1, _id:
-6).set(coordinate: (2, 3)))
-        blocks.append(Block(_width: 1, _height: 2, _id: 7).set(coordinate: (3, 2)))
-        blocks.append(Block(_width: 1, _height: 1, _id: 8).set(coordinate: (0, 4)))
-        blocks.append(Block(_width: 1, _height: 1, _id: 9).set(coordinate: (3, 4)))
-}
-```
+For example. if `state[0][0] == .horizontal`, it means that a horizontally placed block is occupying (0, 0) and (1, 0)
 
-接下来就是要将当前格局进行编码，生成一个40位的字符串，因为是字符串，所以不存在之前编码长度超出int类型所能表示的范围。自左向右，自上到下，依次将state编码数组和board编码数组放在放在偶数位和奇数位上形成40位的编码。
+if `board[0][0] == 0`, it means that `ZhangFei` is who that occupies (0, 0) and (1, 0)
+
+**And Finally we are done storing visted layouts in an array coz that sucks.**
+
+We use a `Dictionary` value to store if a layout has been visited. `Dictionary` is like `HashTable` in Java or `map` in C++. It's a `Key: Value` pair. For example if `hasBeenVisited[someLayout] == true`, it means that this `someLayout` has been visited. 
+
+This whole `Dictionary` storing pulled us out of those **array sorting things** and is super fast.
+
+And then we're storing our layout values as `String` which has 40 characters.
 
 ```swift
 func encode() {
-        code = ""
-        for i in 0..<5 {
-            for j in 0..<4 {
-                code.append("\(state[i][j].rawValue)")
-                code.append(board[i][j] < 0 ? "0" : "\(board[i][j])")
-            }
-        }
+	code = ""
+    for i in 0..<5 {
+		for j in 0..<4 {
+			code.append("\(state[i][j].rawValue)")
+			code.append(board[i][j] < 0 ? "0" : "\(board[i][j])")
+		}
+	}
 }
 ```
 
-当前格局位终止格局时，程序结束，而当曹操处于 `state[3][1]`，`state[3][2]`，`state[4][1]`，`state[4][2]`位置时，就到达终止结局。
+And determining if `CaoCao` has reached its destination is easy. When `state[3][1]==state[3][2]==state[4][1]==state[4][2]==.bigSquare`, that's `CaoCao` reaching its destination.
 
 ```swift
 func didWin() -> Bool {
-        //print(state[3][1].rawValue)
-        return (state[3][1].rawValue == state[3][2].rawValue && state[3][2].rawValue == state[4][1].rawValue &&
+	return (state[3][1].rawValue == state[3][2].rawValue && state[3][2].rawValue == state[4][1].rawValue &&
             state[4][1].rawValue == state[4][2].rawValue && state[4][1].rawValue == 4)
 }
 ```
 
-更新队头的函数
+Now that we don't have a `superLayout` property in class  `Block`, we need an exceptional array to store relationship between layouts. That is an array called `parents`. And we keep track of each layout by giving them indexes. That is 3 `Dictionary` values `ts`, `st` and `fullCodeAt`.
+
+This is how we update our queue.
 
 ```swift
 func updateCurrent(subLayout: String, currentLayout: String) {
-        //queue.append(subLayout)
-        swiftyQueue.enqueue(subLayout)
-        layoutWasVisited[subLayout] = true
-        depthFor[subLayout] = depthFor[currentLayout]! + 1
-        ts[numberOfLayoutsVisited] = subLayout
-        fullCodeAt[numberOfLayoutsVisited] = code
-        st[subLayout] = numberOfLayoutsVisited
-        numberOfLayoutsVisited += 1
-        parents[st[subLayout]!] = st[currentLayout]!
+	swiftyQueue.enqueue(subLayout)
+	layoutWasVisited[subLayout] = true
+	depthFor[subLayout] = depthFor[currentLayout]! + 1
+	ts[numberOfLayoutsVisited] = subLayout
+	fullCodeAt[numberOfLayoutsVisited] = code
+	st[subLayout] = numberOfLayoutsVisited
+	numberOfLayoutsVisited += 1
+	parents[st[subLayout]!] = st[currentLayout]!
 }
 ```
 
-接下来就是进行搜索的函数，对当前的格局进行左右上下移动，如果当前人物能够左移则左移，并获取当前的编码，如果左移生成的格局编码在之前并没有出现过，即左移生成的格局不是重复格局，则更新队列数组，之后判断格局是否为终止格局，如果为终止格局则结束搜索，反之，向右移返回上一格局，进行左移判断，之后再重复上下移动。
+#### Breadth First Searching
 
 ```swift
 func move(block: Block, currentLayout: String, direction: Int) -> Bool {
-        switch direction {
-        case 0:
-            if block.canGoLeft {
-                block.goLeft()
-            } else {
-                return false
-            }
-        case 1:
-            if block.canGoRight {
-                block.goRight()
-            } else {
-                return false
-            }
-        case 2:
-            if block.canGoUp {
-                block.goUp()
-            } else {
-                return false
-            }
-        case 3:
-            if block.canGoDown {
-                block.goDown()
-            } else {
-                return false
-            }
-        default:
-            return false
-        }
+	switch direction {
+	case 0:
+		if block.canGoLeft {
+			block.goLeft()
+		} else {
+	        return false
+		}
+	case 1:
+		if block.canGoRight {
+			block.goRight()
+		} else {
+			return false
+		}
+	case 2:
+		if block.canGoUp {
+			block.goUp()
+		} else {
+			return false
+		}
+	case 3:
+		if block.canGoDown {
+			block.goDown()
+		} else {
+			return false
+		}
+	default:
+		return false
+	}
         
-        encode()
-        let layout = currentStateCodeFrom(encoding: code)
-        if layoutWasVisited[layout] == nil {
-            updateCurrent(subLayout: layout, currentLayout: currentLayout)
-            if didWin() {
-                //printSolution(encoding: layout)
-                print("We Won!")
-                return true
-            }
-            //Omitted
-        }
-        
-        switch direction {
-        case 0:
-                block.goRight()
-        case 1:
-                block.goLeft()
-        case 2:
-                block.goDown()
-        case 3:
-                block.goUp()
-        default:
-            break
-        }
-        return false
+	encode()
+	let layout = currentStateCodeFrom(encoding: code)
+	if layoutWasVisited[layout] == nil {
+		updateCurrent(subLayout: layout, currentLayout: currentLayout)
+		if didWin() {
+			print("We Won!")
+			return true
+		}
+	}
+	
+	switch direction {
+	case 0:
+		block.goRight()
+	case 1:
+		block.goLeft()
+	case 2:
+		block.goDown()
+	case 3:
+		block.goUp()
+	default:
+		break
+	}
+	return false
 }
 ```
 
-随机因子，加入随机因子的目的，是为了尝试在随机情况下，能否提高正确答案（或者更接近正确答案的格局）的命中率，来降低搜索的复杂度。
+#### SwiftyQueue
 
-事实证明，在小格局的情况下，我们达到了百分之五十的速度提升。在大格局下，速度提升不明显，有些时候会有明显的速度下降现象。
-
-```swift
-func insert(value: (lhs: Int, rhs: Int)) -> Bool {
-        for eachValue in AI.valueArr {
-            if value == eachValue {
-                return false
-            }
-        }
-        let index = Int(Random.random(number: UInt32(AI.valueArr.count)))
-        AI.valueArr.insert(value, at: index)
-        //AI.valueArr.append(value)
-        return true
-}
-```
-
-SwiftyQueue 
-
-> 由于 Swift 里面没有原生的 Queue 实现，最开始我们使用数组来模拟 Queue，发现效率不佳，于是我们用 LinkedList 等结构实现了 SwiftyQueue
+> There's no native queue impletation in Swift and we used Array to simulate a queue and that's causing speed loss. So we then used LinkedList to implement a queue.
 
 ```swift
 public struct SwiftyQueue<T> {
@@ -580,9 +555,41 @@ public struct SwiftyQueue<T> {
 ```
 
 
-### Class Reference
 
-For the RawAI Class
+#### References
+
+| CLASS         | DISCRIPTION                              |
+| :------------ | :--------------------------------------- |
+| `Block`       | Including information and action of characters |
+| `RawAI`       | second AI to implement the algorithm     |
+| `SwiftyQueue` | SwiftyQueue is a queue used in the algorithm |
+
+For class `Block` :
+
+| PROPERTIES                         | DISCRIPTION                           |
+| ---------------------------------- | ------------------------------------- |
+| `var coordinate: (x: Int, y: Int)` | coordinate of the character(private)  |
+| `fileprivate let _width: Int`      | the width of the character(private)   |
+| `fileprivate let _height: Int`     | the height of the character(private)  |
+| `fileprivate let _id: Int`         | the id of the character(private)      |
+| `var width: Int { get }`           | returns the width                     |
+| `var height: Int { get }`          | returns the height                    |
+| `var id: Int { get }`              | returns the id                        |
+| `var type: BlockType { get }`      | type of the character                 |
+| `var canGoLeft: Bool { get }`      | indicates if it can move left or not  |
+| `var canGoRight { get }`           | indicates if it can move right or not |
+| `var canGoUp { get }`              | indicates if it can move up or not    |
+| `var canGoDown { get }`            | indicates  if it can move down or not |
+
+| INSTANCE METHODS                         | DISCRIPTION                              |
+| ---------------------------------------- | ---------------------------------------- |
+| `func set (coordinate: (x: Int, y: Int)) -> Block` | set the coordinate of a character returns self |
+| `func goLeft ()`                         | go left and update the state             |
+| `func goRight ()`                        | go right and update the state            |
+| `func goUp ()`                           | go up and update the state               |
+| `func goDown ()`                         | go down and update the state             |
+
+For class `RawAI`:
 
 | PROPERTIES                             | DISCRIPTION                              |
 | -------------------------------------- | ---------------------------------------- |
@@ -611,5 +618,24 @@ For the RawAI Class
 
 
 
+## GUI
+
+> Sketch. SpriteKit.
+
+UI and UX are important for an app. We used Sketch to draw the prototype for our game and then used SpriteKit to implement our UI and motions in iOS.
+
+And we created this easy-to-use UI:
+
+![GameOn_iPad](http://ogbzxx07e.bkt.clouddn.com/GameOnIpad.png)
 
 
+
+## About Us
+
+Bao Yixin (鲍一心) 3014216002
+
+Kang Qinlong (康钦珑) 3615000030
+
+Wang Bulei (王布雷) 3014216020
+
+Wei Wenguo (韦文国) 3014216023
