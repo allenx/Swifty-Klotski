@@ -16,13 +16,13 @@ We built Swifty-Klotski in which an AI can automatically search for `feasible` s
 
 Klotski has a 4x5 board with 10 different blocks at different positions. We mapped the board to a simple coordinate system, making it easy to represent different layouts using xAxis and yAxis values.
 
-<img src="http://ogbzxx07e.bkt.clouddn.com/Coordinate.png" width="200px">
+<img src="https://github.com/allenx/Swifty-Klotski/blob/master/img/Coordinate.png" width="200px">
 
 In the coordinate system above, every block's position can be represented by it's top left point's coordinate.
 
 For example, in the layout HengDaoLiMa(横刀立马 in Chinese), the layout is as follows:
 
-![HengDaoLiMa](http://ogbzxx07e.bkt.clouddn.com/HengDaoLiMa.png)
+<img src="https://github.com/allenx/Swifty-Klotski/blob/master/img/HengDaoLiMa.png" width="600px">
 
 (Above is a screenshot of our Klotski game)
 
@@ -626,8 +626,8 @@ UI and UX are important for an app. We used Sketch to draw the prototype for our
 
 And we created this easy-to-use UI:
 
-![GameOn_iPad](http://ogbzxx07e.bkt.clouddn.com/GameOnIpad.png)
-
+![GameOn_iPad](https://github.com/allenx/Swifty-Klotski/blob/master/img/GameOnIpad.png)
+<img src="https://github.com/allenx/Swifty-Klotski/blob/master/img/GameOnIpad.png" width="650px">
 
 
 ## About Us
