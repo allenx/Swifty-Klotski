@@ -627,7 +627,6 @@ UI and UX are important for an app. We used Sketch to draw the prototype for our
 And we created this easy-to-use UI:
 
 ![GameOn_iPad](https://github.com/allenx/Swifty-Klotski/blob/master/img/GameOnIpad.png)
-<img src="https://github.com/allenx/Swifty-Klotski/blob/master/img/GameOnIpad.png" width="650px">
 
 
 ## About Us
