@@ -217,7 +217,7 @@ func areIntersected(lhs: (min: Int, max: Int), rhs: (min: Int, max: Int)) -> Boo
 
 #### Storing Visited Layouts
 
-We store visted layouts in an array in our first implementation. And we do `Binary Insert` and `Binary Search` every time we insert a new layout and search for repeated layout.
+We store visted layouts in an array in our first implementation. And we do `Binary Insert` and `Binary Search` every time we insert a new layout and search for repeated layouts.
 
 Here's our `binaryInsert(value: (lhs: Int, rhs: Int)) -> Bool`
 
