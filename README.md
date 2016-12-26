@@ -8,7 +8,7 @@ Klotski (华容道 in Chinese), is a sliding block puzzle with special `layouts`
 
 We built Swifty-Klotski in which an AI can automatically search for `feasible` solutions to a layout.
 
-## Interpreting the Puzzel in Math
+## Interpreting the Puzzle in Math
 
 > Coordinate Mapping. 
 
