@@ -627,14 +627,3 @@ UI and UX are important for an app. We used Sketch to draw the prototype for our
 And we created this easy-to-use UI:
 
 ![GameOn_iPad](https://github.com/allenx/Swifty-Klotski/blob/master/img/GameOnIpad.png)
-
-
-## About Us
-
-Bao Yixin (鲍一心) 3014216002
-
-Kang Qinlong (康钦珑) 3615000030
-
-Wang Bulei (王布雷) 3014216020
-
-Wei Wenguo (韦文国) 3014216023
